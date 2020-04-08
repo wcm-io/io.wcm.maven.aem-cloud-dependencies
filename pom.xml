@@ -24,7 +24,7 @@
   <version>2020.04.2793.20200403T195013Z-200130.0001-SNAPSHOT</version>
   <packaging>pom</packaging>
 
-  <name>io.wcm.maven.aem-cloud-dependencies</name>
+  <name>AEM Cloud Service Dependencies</name>
   <description>Defines Maven dependencies for the current AEM Cloud Service, including those that are not defined in the aem-sdk-api JAR provided by Adobe.</description>
   <url>https://wcm.io</url>
 

@@ -1,4 +1,4 @@
-<img src="https://wcm.io/images/favicon-16@2x.png"/> wcm.io Tooling
+<img src="https://wcm.io/images/favicon-16@2x.png"/> wcm.io AEM Cloud Service Dependencies
 ======
 [![Build Status](https://travis-ci.org/wcm-io/wcm-io-tooling-aem-cloud-dependencies.png?branch=develop)](https://travis-ci.org/wcm-io/wcm-io-tooling-aem-cloud-dependencies)
 
