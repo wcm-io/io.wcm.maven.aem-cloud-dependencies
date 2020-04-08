@@ -12,9 +12,9 @@ Continuous Integration: https://travis-ci.org/wcm-io/wcm-io-tooling-aem-cloud-de
 
 ## Usage
 
-This POM defines Maven dependencies for AEM Cloud Service, including those that are not defined in the aem-sdk-api JAR provided by Adobe. Additionally, the POM includes Sling-internal dependencies required for [AEM Mocks](https://wcm.io/testing/aem-mock/) in exactly the versions included in the AEM version.
+This POM defines Maven dependencies for AEM Cloud Service, including those that are not defined in the `aem-sdk-api` JAR provided by Adobe. Additionally, the POM includes Sling-internal dependencies required for [AEM Mocks](https://wcm.io/testing/aem-mock/) in exactly the versions included in the AEM version.
 
-The version number of the artifact matches with the version of the aem-sdk-api artifact, plus a last part (4 digits) which is the revision number added by the wcm.io project, and is incremented if a fix or update of the POM needs to be published for the same SDK API version.
+The version number of the artifact matches with the version of the `aem-sdk-api` artifact, plus a last part (4 digits) which is the revision number added by the wcm.io project, and is incremented if a fix or update of the POM needs to be published for the same SDK API version.
 
 To import the dependencies in your AEM project use:
 
