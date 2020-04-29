@@ -7,7 +7,8 @@ Maven dependencies for the AEM Cloud Service SDK
 Documentation: https://wcm.io/tooling/maven/aem-dependencies.html<br/>
 Issues: https://wcm-io.atlassian.net/browse/WTOOL<br/>
 Wiki: https://wcm-io.atlassian.net/wiki/<br/>
-Continuous Integration: https://travis-ci.org/wcm-io/wcm-io-tooling-aem-cloud-dependencies/
+Continuous Integration: https://travis-ci.org/wcm-io/wcm-io-tooling-aem-cloud-dependencies/<br/>
+Commercial support: https://wcm.io/commercial-support.html
 
 
 ## Usage
