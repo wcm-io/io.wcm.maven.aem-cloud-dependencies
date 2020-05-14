@@ -95,10 +95,16 @@ new XMLOutputter().with {
 
 // read URL from locale AEM instance
 def readAemUrl(relativeUrl) {
-  return HttpBuilder.configure {
-    request.uri = LOCAL_AEM_URL + relativeUrl
-    request.auth.basic LOCAL_AEM_USER, LOCAL_AEM_PASSWORD
-  }.get()
+  def url = LOCAL_AEM_URL + relativeUrl
+  try {
+    return HttpBuilder.configure {
+      request.uri = url
+      request.auth.basic LOCAL_AEM_USER, LOCAL_AEM_PASSWORD
+    }.get()
+  }
+  catch (Exception ex) {
+    throw new RuntimeException("Unable to access " + url, ex)
+  }
 }
 
 // reads the AEM version from locale AEM instance and finds the matching AEM SDK version in the maven repository
