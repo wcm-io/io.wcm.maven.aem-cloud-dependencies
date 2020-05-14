@@ -28,6 +28,7 @@ AEM_SDK_MAVEN_REPO = 'https://downloads.experiencecloud.adobe.com/content/maven/
 LOCAL_AEM_URL = 'http://localhost:45026'
 LOCAL_AEM_USER = 'admin'
 LOCAL_AEM_PASSWORD = 'admin'
+AEM_SDK_VERSION = 'auto'   // auto = auto-detected from maven-metadata-xml
 
 //----------------------------------------------------------------------
 
@@ -102,6 +103,9 @@ def readAemUrl(relativeUrl) {
 
 // reads the AEM version from locale AEM instance and finds the matching AEM SDK version in the maven repository
 def resolveAemSdkVersion() {
+  if (AEM_SDK_VERSION != 'auto') {
+    return AEM_SDK_VERSION
+  }
   def aemVersion = (readAemUrl('/system/console/status-productinfo.txt') =~ /Adobe Experience Manager \((.*)\)/)[0][1]
 
   // need to transform from a AEM version like '2020.4.2793.20200403T195013Z' to '2020.04.2793.20200403T195013Z-200130'
