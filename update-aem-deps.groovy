@@ -107,9 +107,10 @@ def resolveAemSdkVersion() {
   // need to transform from a AEM version like '2020.4.2793.20200403T195013Z' to '2020.04.2793.20200403T195013Z-200130'
   def versionPattern = Pattern.compile(aemVersion.replaceAll('\\.','.*') + '-.*')
 
-  def sdkMetadata = new XmlSlurper().parse(AEM_SDK_MAVEN_REPO + '/com/adobe/aem/aem-sdk-api/maven-metadata.xml')
+  def metadataUrl = AEM_SDK_MAVEN_REPO + '/com/adobe/aem/aem-sdk-api/maven-metadata.xml'
+  def sdkMetadata = new XmlSlurper().parse(metadataUrl)
   def aemSdkVersion = sdkMetadata.versioning.versions.version.findResult { it =~ versionPattern ? it : null }
-  assert aemSdkVersion != null : 'No matching AEM SDK version found for AEM version ' + aemVersion
+  assert aemSdkVersion != null : 'No matching AEM SDK version found for AEM version ' + aemVersion + ' (find version with pattern "' + versionPattern + '" in ' + metadataUrl + ')'
   return aemSdkVersion
 }
 
