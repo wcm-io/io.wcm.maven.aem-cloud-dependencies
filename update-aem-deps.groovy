@@ -28,6 +28,7 @@ AEM_SDK_MAVEN_REPO = 'https://downloads.experiencecloud.adobe.com/content/maven/
 LOCAL_AEM_URL = 'http://localhost:45026'
 LOCAL_AEM_USER = 'admin'
 LOCAL_AEM_PASSWORD = 'admin'
+AEM_SDK_VERSION = 'auto'   // auto = auto-detected from maven-metadata-xml
 
 //----------------------------------------------------------------------
 
@@ -94,22 +95,32 @@ new XMLOutputter().with {
 
 // read URL from locale AEM instance
 def readAemUrl(relativeUrl) {
-  return HttpBuilder.configure {
-    request.uri = LOCAL_AEM_URL + relativeUrl
-    request.auth.basic LOCAL_AEM_USER, LOCAL_AEM_PASSWORD
-  }.get()
+  def url = LOCAL_AEM_URL + relativeUrl
+  try {
+    return HttpBuilder.configure {
+      request.uri = url
+      request.auth.basic LOCAL_AEM_USER, LOCAL_AEM_PASSWORD
+    }.get()
+  }
+  catch (Exception ex) {
+    throw new RuntimeException("Unable to access " + url, ex)
+  }
 }
 
 // reads the AEM version from locale AEM instance and finds the matching AEM SDK version in the maven repository
 def resolveAemSdkVersion() {
+  if (AEM_SDK_VERSION != 'auto') {
+    return AEM_SDK_VERSION
+  }
   def aemVersion = (readAemUrl('/system/console/status-productinfo.txt') =~ /Adobe Experience Manager \((.*)\)/)[0][1]
 
   // need to transform from a AEM version like '2020.4.2793.20200403T195013Z' to '2020.04.2793.20200403T195013Z-200130'
   def versionPattern = Pattern.compile(aemVersion.replaceAll('\\.','.*') + '-.*')
 
-  def sdkMetadata = new XmlSlurper().parse(AEM_SDK_MAVEN_REPO + '/com/adobe/aem/aem-sdk-api/maven-metadata.xml')
+  def metadataUrl = AEM_SDK_MAVEN_REPO + '/com/adobe/aem/aem-sdk-api/maven-metadata.xml'
+  def sdkMetadata = new XmlSlurper().parse(metadataUrl)
   def aemSdkVersion = sdkMetadata.versioning.versions.version.findResult { it =~ versionPattern ? it : null }
-  assert aemSdkVersion != null : 'No matching AEM SDK version found for AEM version ' + aemVersion
+  assert aemSdkVersion != null : 'No matching AEM SDK version found for AEM version ' + aemVersion + ' (find version with pattern "' + versionPattern + '" in ' + metadataUrl + ')'
   return aemSdkVersion
 }
 
