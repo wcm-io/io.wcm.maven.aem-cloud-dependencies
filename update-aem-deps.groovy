@@ -24,11 +24,9 @@
  *
  ***********************************************************************/
 
-AEM_SDK_MAVEN_REPO = 'https://repo1.maven.org/maven2'
 LOCAL_AEM_URL = 'http://localhost:45026'
 LOCAL_AEM_USER = 'admin'
 LOCAL_AEM_PASSWORD = 'admin'
-AEM_SDK_VERSION = 'auto'   // auto = auto-detected from maven-metadata-xml
 
 //----------------------------------------------------------------------
 
@@ -51,6 +49,9 @@ import groovy.grape.Grape
 import org.slf4j.LoggerFactory
 import java.util.regex.Pattern
 
+AEM_SDK_MAVEN_REPO = 'https://repo1.maven.org/maven2'
+HINT_PATTERN = /\s*update-aem-deps:([^\s]*)\s*/
+
 log = LoggerFactory.getLogger(this.class)
 
 // detect AEM SDK running on local machine
@@ -69,9 +70,7 @@ pomSetAemSdkVersion(doc, aemSdkVersion)
 
 // update some well-known properties based on specific bundle versions
 log.info 'Update properties...'
-pomUpdateProperty(doc, bundleVersions, 'slf4j.version', 'slf4j.api')
-pomUpdateProperty(doc, bundleVersions, 'jackrabbit.version', 'org.apache.jackrabbit.jackrabbit-jcr-commons')
-pomUpdateProperty(doc, bundleVersions, 'oak.version', 'org.apache.jackrabbit.oak-core')
+pomUpdateProperties(doc, bundleVersions)
 
 // update all dependencies matching the bundles in local POM
 log.info 'Update dependencies...'
@@ -108,9 +107,6 @@ def readAemUrl(relativeUrl) {
 
 // reads the AEM version from locale AEM instance and finds the matching AEM SDK version in the maven repository
 def resolveAemSdkVersion() {
-  if (AEM_SDK_VERSION != 'auto') {
-    return AEM_SDK_VERSION
-  }
   def aemVersion = (readAemUrl('/system/console/status-productinfo.txt') =~ /Adobe Experience Manager \((.*)\)/)[0][1]
 
   // need to transform from a AEM version like '2020.4.2793.20200403T195013Z' to '2020.04.2793.20200403T195013Z-200130'
@@ -150,12 +146,44 @@ def pomSetAemSdkVersion(doc, aemSdkVersion) {
 }
 
 // update property in POM to match with a specific bundle version
-def pomUpdateProperty(doc, bundleVersions, propertyName, bundleName) {
-  def props = XPathFactory.instance().compile('/ns:project/ns:properties/ns:' + propertyName, Filters.element(), null, POM_NS).evaluate(doc)
+def pomUpdateProperties(doc, bundleVersions) {
+  def props = XPathFactory.instance().compile('/ns:project/ns:properties/*', Filters.element(), null, POM_NS).evaluate(doc)
   for (def prop in props) {
-    def version = bundleVersions[bundleName]
-    assert version != null : 'Version of bundle ' + bundleName + ' not found'
-    prop.text = version
+    // check if previous sibling is a comment not with a dependency hint
+    def elementIndex = prop.parent.getContent().indexOf(prop)
+    def previousSibling = null
+    while (elementIndex > 0) {
+      previousSibling = prop.parent.getContent().get(--elementIndex)
+      if (previousSibling instanceof Element || previousSibling instanceof Comment) {
+        break
+      }
+      else {
+        previousSibling = null
+      }
+    }
+    if (previousSibling instanceof Comment && previousSibling.text =~ HINT_PATTERN) {
+      def hint = (previousSibling.text =~ HINT_PATTERN)[0][1]
+      // check for dervied-from hint
+      def derivedFrom = getDerivedFromHint(hint)
+      if (derivedFrom) {
+        def actualVersion = bundleVersions[derivedFrom.bundleName]
+        if (derivedFrom.version != actualVersion) {
+          if (actualVersion) {
+            log.warn "property ${prop.name} is derived from ${derivedFrom.bundleName}:${derivedFrom.version}, but that bundle has currently version ${actualVersion}, check manually"
+          }
+          else {
+            log.warn "property ${prop.name} is derived from ${derivedFrom.bundleName}:${derivedFrom.version}, but that bundle is not present, check manually"
+          }
+        }
+        continue
+      }
+      def bundleName = getBundleNameFromHint(hint)
+      if (bundleName) {
+        def version = bundleVersions[bundleName]
+        assert version != null : 'Version of bundle ' + bundleName + ' not found'
+        prop.text = version
+      }
+    }
   } 
 }
 
@@ -254,8 +282,7 @@ def pomValidateDependencies(doc) {
 
 // check for update-aem-deps hint in comment
 def getDependencyHint(dep) {
-  def hintPattern = /\s*update-aem-deps:([^\s]*)\s*/
-  return dep.getContent().findResult { (it instanceof Comment) && it.text =~ hintPattern ? (it.text =~ hintPattern)[0][1] : null }
+  return dep.getContent().findResult { (it instanceof Comment) && it.text =~ HINT_PATTERN ? (it.text =~ HINT_PATTERN)[0][1] : null }
 }
 
 def getBundleNameFromHint(hint) {

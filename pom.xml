@@ -59,8 +59,11 @@
 
   <properties>
     <!-- versions -->
+    <!-- update-aem-deps:bundle=slf4j.api -->
     <slf4j.version>1.7.30</slf4j.version>
+    <!-- update-aem-deps:bundle=org.apache.jackrabbit.jackrabbit-jcr-commons -->
     <jackrabbit.version>2.20.0</jackrabbit.version>
+    <!-- update-aem-deps:derived-from=org.apache.jackrabbit.oak-core:1.27-R1877737 -->
     <oak.version>1.26.0</oak.version>
 
     <!-- repository settings -->
@@ -436,7 +439,6 @@
       <dependency>
         <groupId>org.apache.jackrabbit</groupId>
         <artifactId>oak-jcr</artifactId>
-        <!-- update-aem-deps:derived-from=oak-jcr:1.27.0.R1877737 -->
         <version>${oak.version}</version>
       </dependency>
 
