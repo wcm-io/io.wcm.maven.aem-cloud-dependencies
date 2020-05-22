@@ -240,10 +240,7 @@ def pomValidateDependencies(doc) {
       Grape.grab(group: groupId, module: artifactId, version: version)
     }
     catch (Exception ex) {
-      if (ex.message =~ /bad organisation: expected='com.adobe.aem' found='com.adobe.sdk'/) {
-        // ignore: problem in com.adobe.aem:aem-sdk-api which contains invalid groupId
-      }
-      else if (ex.message =~ /download failed: javax.mail#javax.mail-api;1.6.2!javax.mail-api.jar/
+      if (ex.message =~ /download failed: javax.mail#javax.mail-api;1.6.2!javax.mail-api.jar/
           || ex.message =~ /download failed: org.apache.poi#poi-ooxml-schemas;4.0.1!poi-ooxml-schemas.jar/
           || ex.message =~ /download failed: org.apache.xmlgraphics#fop;1.0!fop.jar/) {
         // ignore: dependencies cannot be downloaded by grape/ivy - unsure why

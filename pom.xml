@@ -21,7 +21,7 @@
 
   <groupId>io.wcm.maven</groupId>
   <artifactId>io.wcm.maven.aem-cloud-dependencies</artifactId>
-  <version>2020.5.3306.20200514T034007Z-200507.0001-SNAPSHOT</version>
+  <version>2020.5.3375.20200520T082948Z-200507.0000-SNAPSHOT</version>
   <packaging>pom</packaging>
 
   <name>AEM Cloud Service Dependencies</name>
@@ -77,7 +77,7 @@
       <dependency>
         <groupId>com.adobe.aem</groupId>
         <artifactId>aem-sdk-api</artifactId>
-        <version>2020.5.3306.20200514T034007Z-200507</version>
+        <version>2020.5.3375.20200520T082948Z-200507</version>
       </dependency>
 
       <!-- OSGI -->
@@ -395,7 +395,7 @@
       <dependency>
         <groupId>org.apache.sling</groupId>
         <artifactId>org.apache.sling.scripting.sightly.compiler.java</artifactId>
-        <!-- update-aem-deps:derived-from=org.apache.sling.scripting.sightly.compiler.java:1.1.5-1.4.0-T20200409221418-b5892a9 -->
+        <!-- update-aem-deps:derived-from=org.apache.sling.scripting.sightly.compiler.java:1.1.5-1.4.0-T20200519214950-ba8e83a -->
         <version>1.1.4-1.4.0</version>
       </dependency>
       <dependency>
@@ -436,7 +436,7 @@
       <dependency>
         <groupId>org.apache.jackrabbit</groupId>
         <artifactId>oak-jcr</artifactId>
-        <!-- update-aem-deps:derived-from=oak-jcr:1.27-R1877503 -->
+        <!-- update-aem-deps:derived-from=oak-jcr:1.27.0.R1877737 -->
         <version>${oak.version}</version>
       </dependency>
 
