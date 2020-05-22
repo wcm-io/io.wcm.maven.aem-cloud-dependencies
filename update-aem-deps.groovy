@@ -24,7 +24,7 @@
  *
  ***********************************************************************/
 
-AEM_SDK_MAVEN_REPO = 'https://downloads.experiencecloud.adobe.com/content/maven/public'
+AEM_SDK_MAVEN_REPO = 'https://repo1.maven.org/maven2'
 LOCAL_AEM_URL = 'http://localhost:45026'
 LOCAL_AEM_USER = 'admin'
 LOCAL_AEM_PASSWORD = 'admin'
@@ -33,7 +33,6 @@ AEM_SDK_VERSION = 'auto'   // auto = auto-detected from maven-metadata-xml
 //----------------------------------------------------------------------
 
 @GrabResolver(name='adobe-public-releases', root='https://repo.adobe.com/nexus/content/groups/public')
-@GrabResolver(name='adobe-experience-cloud', root='https://downloads.experiencecloud.adobe.com/content/maven/public')
 
 @Grab('org.slf4j:slf4j-simple:1.7.30')
 @Grab('io.github.http-builder-ng:http-builder-ng-core:1.0.4')
