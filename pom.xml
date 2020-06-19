@@ -21,7 +21,7 @@
 
   <groupId>io.wcm.maven</groupId>
   <artifactId>io.wcm.maven.aem-cloud-dependencies</artifactId>
-  <version>2020.6.3614.20200604T023048Z-200507.0000</version>
+  <version>2020.6.3756.20200618T010733Z-200604.0000</version>
   <packaging>pom</packaging>
 
   <name>AEM Cloud Service Dependencies</name>
@@ -80,7 +80,7 @@
       <dependency>
         <groupId>com.adobe.aem</groupId>
         <artifactId>aem-sdk-api</artifactId>
-        <version>2020.6.3614.20200604T023048Z-200507</version>
+        <version>2020.6.3756.20200618T010733Z-200604</version>
       </dependency>
 
       <!-- OSGI -->
@@ -161,6 +161,11 @@
       </dependency>
 
       <!-- Dependencies included in uber jar - but we keep them here for backward compatibility with older aem-dependencies versions -->
+      <dependency>
+        <groupId>com.adobe.cq</groupId>
+        <artifactId>core.wcm.components.core</artifactId>
+        <version>2.10.0</version>
+      </dependency>
       <dependency>
         <groupId>org.slf4j</groupId>
         <artifactId>slf4j-api</artifactId>
