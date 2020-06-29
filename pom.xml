@@ -21,7 +21,7 @@
 
   <groupId>io.wcm.maven</groupId>
   <artifactId>io.wcm.maven.aem-cloud-dependencies</artifactId>
-  <version>2020.6.3756.20200618T010733Z-200604.0001-SNAPSHOT</version>
+  <version>2020.6.3800.20200626T210738Z-200604.0000-SNAPSHOT</version>
   <packaging>pom</packaging>
 
   <name>AEM Cloud Service Dependencies</name>
@@ -80,7 +80,7 @@
       <dependency>
         <groupId>com.adobe.aem</groupId>
         <artifactId>aem-sdk-api</artifactId>
-        <version>2020.6.3756.20200618T010733Z-200604</version>
+        <version>2020.6.3800.20200626T210738Z-200604</version>
       </dependency>
 
       <!-- OSGI -->
@@ -335,7 +335,7 @@
       <dependency>
         <groupId>org.apache.sling</groupId>
         <artifactId>org.apache.sling.jcr.resource</artifactId>
-        <version>3.0.20</version>
+        <version>3.0.22</version>
       </dependency>
       <dependency>
         <groupId>org.apache.sling</groupId>
@@ -375,9 +375,8 @@
       </dependency>
       <dependency>
         <groupId>org.apache.sling</groupId>
-        <!-- update-aem-deps:derived-from=org.apache.sling.scripting.core:2.2.1-T20200525020707-00c4d14 -->
         <artifactId>org.apache.sling.scripting.core</artifactId>
-        <version>2.2.0</version>
+        <version>2.3.0</version>
         <exclusions>
           <exclusion>
             <groupId>org.osgi</groupId>
@@ -392,19 +391,17 @@
       <dependency>
         <groupId>org.apache.sling</groupId>
         <artifactId>org.apache.sling.scripting.sightly</artifactId>
-        <!-- update-aem-deps:derived-from=org.apache.sling.scripting.sightly:1.4.0-1.4.0-T20200520002105-81e27c4 -->
-        <version>1.3.2-1.4.0</version>
+        <version>1.4.0-1.4.0</version>
       </dependency>
       <dependency>
         <groupId>org.apache.sling</groupId>
         <artifactId>org.apache.sling.scripting.sightly.compiler</artifactId>
-        <version>1.2.4-1.4.0</version>
+        <version>1.2.6-1.4.0</version>
       </dependency>
       <dependency>
         <groupId>org.apache.sling</groupId>
         <artifactId>org.apache.sling.scripting.sightly.compiler.java</artifactId>
-        <!-- update-aem-deps:derived-from=org.apache.sling.scripting.sightly.compiler.java:1.1.5-1.4.0-T20200519214950-ba8e83a -->
-        <version>1.1.4-1.4.0</version>
+        <version>1.2.0-1.4.0</version>
       </dependency>
       <dependency>
         <groupId>org.apache.sling</groupId>
