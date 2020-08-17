@@ -92,20 +92,6 @@
         <scope>import</scope>
       </dependency>
 
-      <!-- OSGI -->
-      <dependency>
-        <groupId>org.osgi</groupId>
-        <artifactId>osgi.core</artifactId>
-        <!-- update-aem-deps:ignore -->
-        <version>7.0.0</version>
-      </dependency>
-      <dependency>
-        <groupId>org.osgi</groupId>
-        <artifactId>osgi.cmpn</artifactId>
-        <!-- update-aem-deps:ignore -->
-        <version>7.0.0</version>
-      </dependency>
-
       <!-- Standard APIs -->
       <dependency>
         <groupId>javax.jcr</groupId>
