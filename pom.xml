@@ -83,6 +83,15 @@
         <version>2020.8.4039.20200813T011654Z-200730</version>
       </dependency>
 
+      <!-- Transitive dependencies of aem-sdk-api -->
+      <dependency>
+        <groupId>com.adobe.aem</groupId>
+        <artifactId>aem-sdk-api</artifactId>
+        <type>pom</type>
+        <version>2020.8.4039.20200813T011654Z-200730</version>
+        <scope>import</scope>
+      </dependency>
+
       <!-- OSGI -->
       <dependency>
         <groupId>org.osgi</groupId>
