@@ -21,7 +21,7 @@
 
   <groupId>io.wcm.maven</groupId>
   <artifactId>io.wcm.maven.aem-cloud-dependencies</artifactId>
-  <version>2020.8.4039.20200813T011654Z-200730.0001-SNAPSHOT</version>
+  <version>2020.8.4067.20200818T150744Z-200730.0000-SNAPSHOT</version>
   <packaging>pom</packaging>
 
   <name>AEM Cloud Service Dependencies</name>
@@ -63,7 +63,7 @@
     <slf4j.version>1.7.30</slf4j.version>
     <!-- update-aem-deps:bundle=org.apache.jackrabbit.jackrabbit-jcr-commons -->
     <jackrabbit.version>2.20.0</jackrabbit.version>
-    <!-- update-aem-deps:derived-from=org.apache.jackrabbit.oak-core:1.33-R1880601 -->
+    <!-- update-aem-deps:derived-from=org.apache.jackrabbit.oak-core:1.33-R1880830 -->
     <oak.version>1.32.0</oak.version>
 
     <!-- repository settings -->
@@ -80,7 +80,7 @@
       <dependency>
         <groupId>com.adobe.aem</groupId>
         <artifactId>aem-sdk-api</artifactId>
-        <version>2020.8.4039.20200813T011654Z-200730</version>
+        <version>2020.8.4067.20200818T150744Z-200730</version>
       </dependency>
 
       <!-- OSGI -->
@@ -164,7 +164,7 @@
       <dependency>
         <groupId>com.adobe.cq</groupId>
         <artifactId>core.wcm.components.core</artifactId>
-        <version>2.11.0</version>
+        <version>2.11.1</version>
       </dependency>
       <dependency>
         <groupId>org.slf4j</groupId>
