@@ -21,7 +21,7 @@
 
   <groupId>io.wcm.maven</groupId>
   <artifactId>io.wcm.maven.aem-cloud-dependencies</artifactId>
-  <version>2020.8.4139.20200830T210742Z-200827.0000</version>
+  <version>2020.9.4174.20200907T030734Z-200827.0000</version>
   <packaging>pom</packaging>
 
   <name>AEM Cloud Service Dependencies</name>
@@ -80,10 +80,60 @@
       <dependency>
         <groupId>com.adobe.aem</groupId>
         <artifactId>aem-sdk-api</artifactId>
-        <version>2020.8.4139.20200830T210742Z-200827</version>
+        <version>2020.9.4174.20200907T030734Z-200827</version>
       </dependency>
 
-      <!-- OSGI -->
+      <!-- OSGI (individual artifacts) -->
+      <dependency>
+        <groupId>org.osgi</groupId>
+        <artifactId>org.osgi.framework</artifactId>
+        <!-- update-aem-deps:bundle-package=org.apache.felix.framework:org.osgi.framework -->
+        <version>1.9.0</version>
+      </dependency>
+      <dependency>
+        <groupId>org.osgi</groupId>
+        <artifactId>org.osgi.service.component</artifactId>
+        <!-- update-aem-deps:bundle-package=org.apache.felix.scr:org.osgi.service.component -->
+        <version>1.4.0</version>
+      </dependency>
+      <dependency>
+        <groupId>org.osgi</groupId>
+        <artifactId>org.osgi.service.metatype</artifactId>
+        <!-- update-aem-deps:bundle-package=org.apache.felix.metatype:org.osgi.service.metatype -->
+        <version>1.4.0</version>
+      </dependency>
+      <dependency>
+        <groupId>org.osgi</groupId>
+        <artifactId>org.osgi.service.cm</artifactId>
+        <!-- update-aem-deps:bundle-package=org.apache.felix.configadmin:org.osgi.service.cm -->
+        <version>1.6.0</version>
+      </dependency>
+      <dependency>
+        <groupId>org.osgi</groupId>
+        <artifactId>org.osgi.service.event</artifactId>
+        <!-- update-aem-deps:bundle-package=org.apache.felix.eventadmin:org.osgi.service.event -->
+        <version>1.4.0</version>
+      </dependency>
+      <dependency>
+        <groupId>org.osgi</groupId>
+        <artifactId>org.osgi.service.http</artifactId>
+        <!-- update-aem-deps:bundle-package=org.apache.felix.http.jetty:org.osgi.service.http -->
+        <version>1.2.1</version>
+      </dependency>
+      <dependency>
+        <groupId>org.osgi</groupId>
+        <artifactId>org.osgi.service.http.whiteboard</artifactId>
+        <!-- update-aem-deps:bundle-package=org.apache.felix.http.jetty:org.osgi.service.http.whiteboard -->
+        <version>1.1.0</version>
+      </dependency>
+      <dependency>
+        <groupId>org.osgi</groupId>
+        <artifactId>org.osgi.util.converter</artifactId>
+        <!-- update-aem-deps:derived-from=org.apache.felix.converter:1.0.14 -->
+        <version>1.0.1</version>
+      </dependency>
+
+      <!-- OSGI (aggregated artifacts - it is recommended to use the individual artifacts instead) -->
       <dependency>
         <groupId>org.osgi</groupId>
         <artifactId>osgi.core</artifactId>
@@ -214,7 +264,7 @@
       <dependency>
         <groupId>org.apache.httpcomponents</groupId>
         <artifactId>httpclient</artifactId>
-        <version>4.5.4</version>
+        <version>4.5.12</version>
       </dependency>
       <dependency>
         <groupId>com.day.commons.osgi.wrapper</groupId>
@@ -391,6 +441,7 @@
       <dependency>
         <groupId>org.apache.sling</groupId>
         <artifactId>org.apache.sling.scripting.sightly</artifactId>
+        <!-- update-aem-deps:derived-from=org.apache.sling.scripting.sightly:1.4.3-1.4.0-T20200903184904-65c4814 -->
         <version>1.4.2-1.4.0</version>
       </dependency>
       <dependency>

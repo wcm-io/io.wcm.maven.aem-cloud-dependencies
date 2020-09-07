@@ -19,7 +19,7 @@
  */
 
 /***********************************************************************
- * 
+ *
  * PARAMETERS
  *
  ***********************************************************************/
@@ -61,7 +61,8 @@ log.info 'AEM SDK Version: ' + aemSdkVersion
 // get bundles version running in local AEM instance
 log.info 'Reading bundle versions...'
 def bundleVersions = ['aem-sdk-api':aemSdkVersion]
-readBundleVersions(bundleVersions)
+def bundlePackageVersions = [:]
+readBundleVersions(bundleVersions, bundlePackageVersions)
 
 // read process pom using JDOM to preserve formatting and whitespaces
 POM_NS = Namespace.getNamespace('ns', 'http://maven.apache.org/POM/4.0.0')
@@ -74,7 +75,7 @@ pomUpdateProperties(doc, bundleVersions)
 
 // update all dependencies matching the bundles in local POM
 log.info 'Update dependencies...'
-pomUpdateDependencies(doc, bundleVersions)
+pomUpdateDependencies(doc, bundleVersions, bundlePackageVersions)
 
 // validate all dependencies
 log.info 'Validate dependencies...'
@@ -120,7 +121,7 @@ def resolveAemSdkVersion() {
 }
 
 // read versions of all maven artifacts from bundle list
-def readBundleVersions(bundleVersions) {
+def readBundleVersions(bundleVersions, bundlePackageVersions) {
   def bundleList = readAemUrl('/system/console/bundles.json')
   bundleList.data.each {
     def version = it.version
@@ -134,6 +135,22 @@ def readBundleVersions(bundleVersions) {
       }
     }
     bundleVersions[it.symbolicName] = version;
+
+    // read exported package versions
+    def exportedPackages = bundleDetails.data[0].props.findResult { it.key == 'Exported Packages' ? it : null }
+    def packageVersions = [:]
+    if (exportedPackages && exportedPackages.value) {
+      exportedPackages.value.each {
+        def exportedPackage = "${it}";
+        def packageVersionPattern = /(.*),version=(.*)/;
+        def matcher = (exportedPackage =~ packageVersionPattern)
+        if (matcher.matches()) {
+          packageVersions[matcher.group(1)] = matcher.group(2)
+        }
+      }
+    }
+    bundlePackageVersions[it.symbolicName] = packageVersions
+
   }
 }
 
@@ -142,7 +159,7 @@ def pomSetAemSdkVersion(doc, aemSdkVersion) {
   def versions = XPathFactory.instance().compile('/ns:project/ns:version', Filters.element(), null, POM_NS).evaluate(doc)
   for (def version in versions) {
     version.text = "${aemSdkVersion}.0000-SNAPSHOT"
-  } 
+  }
 }
 
 // update property in POM to match with a specific bundle version
@@ -184,11 +201,11 @@ def pomUpdateProperties(doc, bundleVersions) {
         prop.text = version
       }
     }
-  } 
+  }
 }
 
 // updates all dependencies to their latest versions
-def pomUpdateDependencies(doc, bundleVersions) {
+def pomUpdateDependencies(doc, bundleVersions, bundlePackageVersions) {
   def deps = XPathFactory.instance().compile('/ns:project/ns:dependencyManagement/ns:dependencies/ns:dependency', Filters.element(), null, POM_NS).evaluate(doc)
   for (def dep in deps) {
     def groupId = dep.getChild('groupId', POM_NS).text
@@ -229,11 +246,17 @@ def pomUpdateDependencies(doc, bundleVersions) {
       version = bundleVersions[bundleName]
     }
     else {
-      // check for bundle = artifactId
-      version = bundleVersions[artifactId]
-      if (!version) {
-        // alternatively check combination for groupId and artifactId
-        version = bundleVersions["${groupId}.${artifactId}"]
+      def bundlePackage = getBundlePackageFromHint(hint)
+      if (bundlePackage) {
+        version = bundlePackageVersions[bundlePackage.bundleName][bundlePackage.packageName]
+      }
+      else {
+        // check for bundle = artifactId
+        version = bundleVersions[artifactId]
+        if (!version) {
+          // alternatively check combination for groupId and artifactId
+          version = bundleVersions["${groupId}.${artifactId}"]
+        }
       }
     }
     if (version) {
@@ -260,9 +283,9 @@ def pomValidateDependencies(doc) {
       def props = XPathFactory.instance().compile('/ns:project/ns:properties/ns:' + propertyName, Filters.element(), null, POM_NS).evaluate(doc)
       for (def prop in props) {
         version = prop.text
-      } 
+      }
     }
-    
+
     // try to resolve dependency
     try {
       Grape.grab(group: groupId, module: artifactId, version: version)
@@ -301,6 +324,17 @@ def getDerivedFromHint(hint) {
   def matcher = (hint =~ derivedFromPattern)
   if (matcher.matches()) {
     return [ bundleName: matcher.group(1), version: matcher.group(2) ]
+  }
+  else {
+    return null
+  }
+}
+
+def getBundlePackageFromHint(hint) {
+  def bundlePackagePattern = /bundle-package=(.*):(.*)/;
+  def matcher = (hint =~ bundlePackagePattern)
+  if (matcher.matches()) {
+    return [ bundleName: matcher.group(1), packageName: matcher.group(2) ]
   }
   else {
     return null
