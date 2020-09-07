@@ -19,7 +19,7 @@
  */
 
 /***********************************************************************
- * 
+ *
  * PARAMETERS
  *
  ***********************************************************************/
@@ -159,7 +159,7 @@ def pomSetAemSdkVersion(doc, aemSdkVersion) {
   def versions = XPathFactory.instance().compile('/ns:project/ns:version', Filters.element(), null, POM_NS).evaluate(doc)
   for (def version in versions) {
     version.text = "${aemSdkVersion}.0000-SNAPSHOT"
-  } 
+  }
 }
 
 // update property in POM to match with a specific bundle version
@@ -201,7 +201,7 @@ def pomUpdateProperties(doc, bundleVersions) {
         prop.text = version
       }
     }
-  } 
+  }
 }
 
 // updates all dependencies to their latest versions
@@ -283,9 +283,9 @@ def pomValidateDependencies(doc) {
       def props = XPathFactory.instance().compile('/ns:project/ns:properties/ns:' + propertyName, Filters.element(), null, POM_NS).evaluate(doc)
       for (def prop in props) {
         version = prop.text
-      } 
+      }
     }
-    
+
     // try to resolve dependency
     try {
       Grape.grab(group: groupId, module: artifactId, version: version)
