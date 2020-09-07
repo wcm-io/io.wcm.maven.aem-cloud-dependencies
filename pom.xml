@@ -21,7 +21,7 @@
 
   <groupId>io.wcm.maven</groupId>
   <artifactId>io.wcm.maven.aem-cloud-dependencies</artifactId>
-  <version>2020.8.4139.20200830T210742Z-200827.0001-SNAPSHOT</version>
+  <version>2020.9.4174.20200907T030734Z-200827.0000-SNAPSHOT</version>
   <packaging>pom</packaging>
 
   <name>AEM Cloud Service Dependencies</name>
@@ -80,7 +80,7 @@
       <dependency>
         <groupId>com.adobe.aem</groupId>
         <artifactId>aem-sdk-api</artifactId>
-        <version>2020.8.4139.20200830T210742Z-200827</version>
+        <version>2020.9.4174.20200907T030734Z-200827</version>
       </dependency>
 
       <!-- OSGI -->
@@ -214,7 +214,7 @@
       <dependency>
         <groupId>org.apache.httpcomponents</groupId>
         <artifactId>httpclient</artifactId>
-        <version>4.5.4</version>
+        <version>4.5.12</version>
       </dependency>
       <dependency>
         <groupId>com.day.commons.osgi.wrapper</groupId>
@@ -391,6 +391,7 @@
       <dependency>
         <groupId>org.apache.sling</groupId>
         <artifactId>org.apache.sling.scripting.sightly</artifactId>
+        <!-- update-aem-deps:derived-from=org.apache.sling.scripting.sightly:1.4.3-1.4.0-T20200903184904-65c4814 -->
         <version>1.4.2-1.4.0</version>
       </dependency>
       <dependency>
