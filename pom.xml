@@ -21,7 +21,7 @@
 
   <groupId>io.wcm.maven</groupId>
   <artifactId>io.wcm.maven.aem-cloud-dependencies</artifactId>
-  <version>2020.9.4174.20200907T030734Z-200827.0001-SNAPSHOT</version>
+  <version>2020.9.4194.20200909T200349Z-200827.0000-SNAPSHOT</version>
   <packaging>pom</packaging>
 
   <name>AEM Cloud Service Dependencies</name>
@@ -80,7 +80,7 @@
       <dependency>
         <groupId>com.adobe.aem</groupId>
         <artifactId>aem-sdk-api</artifactId>
-        <version>2020.9.4174.20200907T030734Z-200827</version>
+        <version>2020.9.4194.20200909T200349Z-200827</version>
       </dependency>
 
       <!-- OSGI (individual artifacts) -->
