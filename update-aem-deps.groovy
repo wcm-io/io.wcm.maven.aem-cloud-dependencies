@@ -53,6 +53,7 @@ AEM_SDK_MAVEN_REPO = 'https://repo1.maven.org/maven2'
 HINT_PATTERN = /\s*update-aem-deps:([^\s]*)\s*/
 
 log = LoggerFactory.getLogger(this.class)
+exitWithFailure = false
 
 // detect AEM SDK running on local machine
 def aemSdkVersion = resolveAemSdkVersion()
@@ -89,6 +90,12 @@ new XMLOutputter().with {
   output(doc, os)
   os.close()
 }
+
+if (exitWithFailure) {
+  System.exit(1)
+}
+
+
 
 // --- functions ---
 
@@ -187,9 +194,11 @@ def pomUpdateProperties(doc, bundleVersions) {
         if (derivedFrom.version != actualVersion) {
           if (actualVersion) {
             log.warn "property ${prop.name} is derived from ${derivedFrom.bundleName}:${derivedFrom.version}, but that bundle has currently version ${actualVersion}, check manually"
+            exitWithFailure = true
           }
           else {
             log.warn "property ${prop.name} is derived from ${derivedFrom.bundleName}:${derivedFrom.version}, but that bundle is not present, check manually"
+            exitWithFailure = true
           }
         }
         continue
@@ -225,9 +234,11 @@ def pomUpdateDependencies(doc, bundleVersions, bundlePackageVersions) {
       if (derivedFrom.version != actualVersion) {
         if (actualVersion) {
           log.warn "${groupId}:${artifactId} is derived from ${derivedFrom.bundleName}:${derivedFrom.version}, but that bundle has currently version ${actualVersion}, check manually"
+          exitWithFailure = true
         }
         else {
           log.warn "${groupId}:${artifactId} is derived from ${derivedFrom.bundleName}:${derivedFrom.version}, but that bundle is not present, check manually"
+          exitWithFailure = true
         }
       }
       continue
@@ -264,6 +275,7 @@ def pomUpdateDependencies(doc, bundleVersions, bundlePackageVersions) {
     }
     else {
       log.warn "No matching bundle: ${groupId}:${artifactId}"
+      exitWithFailure = true
     }
   }
 }
