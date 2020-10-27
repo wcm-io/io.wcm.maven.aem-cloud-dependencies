@@ -53,6 +53,7 @@ AEM_SDK_MAVEN_REPO = 'https://repo1.maven.org/maven2'
 HINT_PATTERN = /\s*update-aem-deps:([^\s]*)\s*/
 
 log = LoggerFactory.getLogger(this.class)
+exitWithFailure = false
 
 // detect AEM SDK running on local machine
 def aemSdkVersion = resolveAemSdkVersion()
@@ -60,9 +61,8 @@ log.info 'AEM SDK Version: ' + aemSdkVersion
 
 // get bundles version running in local AEM instance
 log.info 'Reading bundle versions...'
-def bundleVersions = ['aem-sdk-api':aemSdkVersion]
-def bundlePackageVersions = [:]
-readBundleVersions(bundleVersions, bundlePackageVersions)
+def bundleData = ['aem-sdk-api':new BundleData(version:aemSdkVersion)]
+readBundleData(bundleData)
 
 // read process pom using JDOM to preserve formatting and whitespaces
 POM_NS = Namespace.getNamespace('ns', 'http://maven.apache.org/POM/4.0.0')
@@ -71,11 +71,11 @@ pomSetAemSdkVersion(doc, aemSdkVersion)
 
 // update some well-known properties based on specific bundle versions
 log.info 'Update properties...'
-pomUpdateProperties(doc, bundleVersions)
+pomUpdateProperties(doc, bundleData)
 
 // update all dependencies matching the bundles in local POM
 log.info 'Update dependencies...'
-pomUpdateDependencies(doc, bundleVersions, bundlePackageVersions)
+pomUpdateDependencies(doc, bundleData)
 
 // validate all dependencies
 log.info 'Validate dependencies...'
@@ -89,6 +89,12 @@ new XMLOutputter().with {
   output(doc, os)
   os.close()
 }
+
+if (exitWithFailure) {
+  System.exit(1)
+}
+
+
 
 // --- functions ---
 
@@ -121,7 +127,7 @@ def resolveAemSdkVersion() {
 }
 
 // read versions of all maven artifacts from bundle list
-def readBundleVersions(bundleVersions, bundlePackageVersions) {
+def readBundleData(bundleData) {
   def bundleList = readAemUrl('/system/console/bundles.json')
   bundleList.data.each {
     def version = it.version
@@ -134,7 +140,7 @@ def readBundleVersions(bundleVersions, bundlePackageVersions) {
         version = implementationVersion
       }
     }
-    bundleVersions[it.symbolicName] = version;
+    bundleData[it.symbolicName] = new BundleData(version: version);
 
     // read exported package versions
     def exportedPackages = bundleDetails.data[0].props.findResult { it.key == 'Exported Packages' ? it : null }
@@ -149,7 +155,7 @@ def readBundleVersions(bundleVersions, bundlePackageVersions) {
         }
       }
     }
-    bundlePackageVersions[it.symbolicName] = packageVersions
+    bundleData[it.symbolicName].packageVersions = packageVersions
 
   }
 }
@@ -163,7 +169,7 @@ def pomSetAemSdkVersion(doc, aemSdkVersion) {
 }
 
 // update property in POM to match with a specific bundle version
-def pomUpdateProperties(doc, bundleVersions) {
+def pomUpdateProperties(doc, bundleData) {
   def props = XPathFactory.instance().compile('/ns:project/ns:properties/*', Filters.element(), null, POM_NS).evaluate(doc)
   for (def prop in props) {
     // check if previous sibling is a comment not with a dependency hint
@@ -183,20 +189,22 @@ def pomUpdateProperties(doc, bundleVersions) {
       // check for dervied-from hint
       def derivedFrom = getDerivedFromHint(hint)
       if (derivedFrom) {
-        def actualVersion = bundleVersions[derivedFrom.bundleName]
+        def actualVersion = getBundleVersion(bundleData, derivedFrom.bundleName)
         if (derivedFrom.version != actualVersion) {
           if (actualVersion) {
             log.warn "property ${prop.name} is derived from ${derivedFrom.bundleName}:${derivedFrom.version}, but that bundle has currently version ${actualVersion}, check manually"
+            exitWithFailure = true
           }
           else {
             log.warn "property ${prop.name} is derived from ${derivedFrom.bundleName}:${derivedFrom.version}, but that bundle is not present, check manually"
+            exitWithFailure = true
           }
         }
         continue
       }
       def bundleName = getBundleNameFromHint(hint)
       if (bundleName) {
-        def version = bundleVersions[bundleName]
+        def version = getBundleVersion(bundleData, bundleName)
         assert version != null : 'Version of bundle ' + bundleName + ' not found'
         prop.text = version
       }
@@ -205,7 +213,7 @@ def pomUpdateProperties(doc, bundleVersions) {
 }
 
 // updates all dependencies to their latest versions
-def pomUpdateDependencies(doc, bundleVersions, bundlePackageVersions) {
+def pomUpdateDependencies(doc, bundleData) {
   def deps = XPathFactory.instance().compile('/ns:project/ns:dependencyManagement/ns:dependencies/ns:dependency', Filters.element(), null, POM_NS).evaluate(doc)
   for (def dep in deps) {
     def groupId = dep.getChild('groupId', POM_NS).text
@@ -221,13 +229,15 @@ def pomUpdateDependencies(doc, bundleVersions, bundlePackageVersions) {
     // check for dervied-from hint
     def derivedFrom = getDerivedFromHint(hint)
     if (derivedFrom) {
-      def actualVersion = bundleVersions[derivedFrom.bundleName]
+      def actualVersion = getBundleVersion(bundleData, derivedFrom.bundleName)
       if (derivedFrom.version != actualVersion) {
         if (actualVersion) {
           log.warn "${groupId}:${artifactId} is derived from ${derivedFrom.bundleName}:${derivedFrom.version}, but that bundle has currently version ${actualVersion}, check manually"
+          exitWithFailure = true
         }
         else {
           log.warn "${groupId}:${artifactId} is derived from ${derivedFrom.bundleName}:${derivedFrom.version}, but that bundle is not present, check manually"
+          exitWithFailure = true
         }
       }
       continue
@@ -243,19 +253,19 @@ def pomUpdateDependencies(doc, bundleVersions, bundlePackageVersions) {
     def version = null
     def bundleName = getBundleNameFromHint(hint)
     if (bundleName) {
-      version = bundleVersions[bundleName]
+      version = getBundleVersion(bundleData, bundleName)
     }
     else {
       def bundlePackage = getBundlePackageFromHint(hint)
       if (bundlePackage) {
-        version = bundlePackageVersions[bundlePackage.bundleName][bundlePackage.packageName]
+        version = bundleData[bundlePackage.bundleName].packageVersions[bundlePackage.packageName]
       }
       else {
         // check for bundle = artifactId
-        version = bundleVersions[artifactId]
+        version = getBundleVersion(bundleData, artifactId)
         if (!version) {
           // alternatively check combination for groupId and artifactId
-          version = bundleVersions["${groupId}.${artifactId}"]
+          version = getBundleVersion(bundleData, "${groupId}.${artifactId}")
         }
       }
     }
@@ -264,6 +274,7 @@ def pomUpdateDependencies(doc, bundleVersions, bundlePackageVersions) {
     }
     else {
       log.warn "No matching bundle: ${groupId}:${artifactId}"
+      exitWithFailure = true
     }
   }
 }
@@ -298,6 +309,7 @@ def pomValidateDependencies(doc) {
       }
       else {
         log.error ex.message
+        exitWithFailure = true
       }
     }
   }
@@ -339,4 +351,13 @@ def getBundlePackageFromHint(hint) {
   else {
     return null
   }
+}
+
+def getBundleVersion(bundleData, bundleName) {
+  return bundleData[bundleName]?.version
+}
+
+class BundleData {
+  String version
+  Map packageVersions
 }
