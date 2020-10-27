@@ -32,6 +32,10 @@ To import the dependencies in your AEM project use:
 ```
 
 
+## Release cycle
+
+We do not make new releases of this dependency POM for each single AEM cloud release, but we plan to publish at least one updated version per month. If you need a new version contact us a the [mailing list](https://wcm.io/mailing-lists.html).
+
 
 ## Build from sources
 
