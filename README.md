@@ -1,13 +1,13 @@
 <img src="https://wcm.io/images/favicon-16@2x.png"/> wcm.io AEM Cloud Service Dependencies
 ======
-[![Build Status](https://travis-ci.org/wcm-io/wcm-io-tooling-aem-cloud-dependencies.png?branch=develop)](https://travis-ci.org/wcm-io/wcm-io-tooling-aem-cloud-dependencies)
+[![Build Status](https://travis-ci.com/wcm-io/wcm-io-tooling-aem-cloud-dependencies.png?branch=develop)](https://travis-ci.com/wcm-io/wcm-io-tooling-aem-cloud-dependencies)
 
 Maven dependencies for the AEM Cloud Service SDK
 
 Documentation: https://wcm.io/tooling/maven/aem-dependencies.html<br/>
 Issues: https://wcm-io.atlassian.net/browse/WTOOL<br/>
 Wiki: https://wcm-io.atlassian.net/wiki/<br/>
-Continuous Integration: https://travis-ci.org/wcm-io/wcm-io-tooling-aem-cloud-dependencies/<br/>
+Continuous Integration: https://travis-ci.com/wcm-io/wcm-io-tooling-aem-cloud-dependencies/<br/>
 Commercial support: https://wcm.io/commercial-support.html
 
 
