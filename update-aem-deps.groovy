@@ -24,7 +24,7 @@
  *
  ***********************************************************************/
 
-LOCAL_AEM_URL = 'http://localhost:45026'
+LOCAL_AEM_URL = 'http://localhost:4502'
 LOCAL_AEM_USER = 'admin'
 LOCAL_AEM_PASSWORD = 'admin'
 
