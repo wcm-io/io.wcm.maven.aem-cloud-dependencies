@@ -24,7 +24,7 @@
  *
  ***********************************************************************/
 
-LOCAL_AEM_URL = 'http://localhost:45026'
+LOCAL_AEM_URL = 'http://localhost:4502'
 LOCAL_AEM_USER = 'admin'
 LOCAL_AEM_PASSWORD = 'admin'
 
@@ -59,9 +59,14 @@ exitWithFailure = false
 def aemSdkVersion = resolveAemSdkVersion()
 log.info 'AEM SDK Version: ' + aemSdkVersion
 
+// get versions from AEM SDK API POM
+log.info 'Reading versions defined in AEM SDK API POM...'
+def aemSdkApiData = ['com.adobe.aem:aem-sdk-api':new BundleData(version:aemSdkVersion)]
+readAemSdkApiData(aemSdkVersion, aemSdkApiData)
+
 // get bundles version running in local AEM instance
 log.info 'Reading bundle versions...'
-def bundleData = ['aem-sdk-api':new BundleData(version:aemSdkVersion)]
+def bundleData = [:]
 readBundleData(bundleData)
 
 // read process pom using JDOM to preserve formatting and whitespaces
@@ -75,7 +80,7 @@ pomUpdateProperties(doc, bundleData)
 
 // update all dependencies matching the bundles in local POM
 log.info 'Update dependencies...'
-pomUpdateDependencies(doc, bundleData)
+pomUpdateDependencies(doc, bundleData, aemSdkApiData)
 
 // validate all dependencies
 log.info 'Validate dependencies...'
@@ -126,6 +131,17 @@ def resolveAemSdkVersion() {
   return aemSdkVersion
 }
 
+// reads the versions of dependencies declared in AEM API SDK POM
+// which are not declared as dependencyManagement, so they cannot be imported directly
+def readAemSdkApiData(aemSdkVersion, aemSdkApiData) {
+  def pomUrl = AEM_SDK_MAVEN_REPO + '/com/adobe/aem/aem-sdk-api/' + aemSdkVersion + '/aem-sdk-api-' + aemSdkVersion + ".pom"
+  def pomData = new XmlSlurper().parse(pomUrl)
+  pomData.dependencies.dependency.each {
+    def key = it.groupId.toString() + ':' + it.artifactId.toString()
+    aemSdkApiData[key] = new BundleData(version: it.version)
+  }
+}
+
 // read versions of all maven artifacts from bundle list
 def readBundleData(bundleData) {
   def bundleList = readAemUrl('/system/console/bundles.json')
@@ -140,15 +156,15 @@ def readBundleData(bundleData) {
         version = implementationVersion
       }
     }
-    bundleData[it.symbolicName] = new BundleData(version: version);
+    bundleData[it.symbolicName] = new BundleData(version: version)
 
     // read exported package versions
     def exportedPackages = bundleDetails.data[0].props.findResult { it.key == 'Exported Packages' ? it : null }
     def packageVersions = [:]
     if (exportedPackages && exportedPackages.value) {
       exportedPackages.value.each {
-        def exportedPackage = "${it}";
-        def packageVersionPattern = /(.*),version=(.*)/;
+        def exportedPackage = "${it}"
+        def packageVersionPattern = /(.*),version=(.*)/
         def matcher = (exportedPackage =~ packageVersionPattern)
         if (matcher.matches()) {
           packageVersions[matcher.group(1)] = matcher.group(2)
@@ -213,7 +229,7 @@ def pomUpdateProperties(doc, bundleData) {
 }
 
 // updates all dependencies to their latest versions
-def pomUpdateDependencies(doc, bundleData) {
+def pomUpdateDependencies(doc, bundleData, aemSdkApiData) {
   def deps = XPathFactory.instance().compile('/ns:project/ns:dependencyManagement/ns:dependencies/ns:dependency', Filters.element(), null, POM_NS).evaluate(doc)
   for (def dep in deps) {
     def groupId = dep.getChild('groupId', POM_NS).text
@@ -251,21 +267,26 @@ def pomUpdateDependencies(doc, bundleData) {
 
     // try to resolve latest version from bundle list
     def version = null
-    def bundleName = getBundleNameFromHint(hint)
-    if (bundleName) {
-      version = getBundleVersion(bundleData, bundleName)
+    if (hasFromAemSdkApiHint(hint)) {
+      version = getAemSdkApiVersion(aemSdkApiData, groupId, artifactId)
     }
     else {
-      def bundlePackage = getBundlePackageFromHint(hint)
-      if (bundlePackage) {
-        version = bundleData[bundlePackage.bundleName].packageVersions[bundlePackage.packageName]
+      def bundleName = getBundleNameFromHint(hint)
+      if (bundleName) {
+        version = getBundleVersion(bundleData, bundleName)
       }
       else {
-        // check for bundle = artifactId
-        version = getBundleVersion(bundleData, artifactId)
-        if (!version) {
-          // alternatively check combination for groupId and artifactId
-          version = getBundleVersion(bundleData, "${groupId}.${artifactId}")
+        def bundlePackage = getBundlePackageFromHint(hint)
+        if (bundlePackage) {
+          version = bundleData[bundlePackage.bundleName].packageVersions[bundlePackage.packageName]
+        }
+        else {
+          // check for bundle = artifactId
+          version = getBundleVersion(bundleData, artifactId)
+          if (!version) {
+            // alternatively check combination for groupId and artifactId
+            version = getBundleVersion(bundleData, "${groupId}.${artifactId}")
+          }
         }
       }
     }
@@ -321,7 +342,7 @@ def getDependencyHint(dep) {
 }
 
 def getBundleNameFromHint(hint) {
-  def bundleNamePattern = /bundle=(.*)/;
+  def bundleNamePattern = /bundle=(.*)/
   def matcher = (hint =~ bundleNamePattern)
   if (matcher.matches()) {
     return matcher.group(1)
@@ -332,7 +353,7 @@ def getBundleNameFromHint(hint) {
 }
 
 def getDerivedFromHint(hint) {
-  def derivedFromPattern = /derived-from=(.*):(.*)/;
+  def derivedFromPattern = /derived-from=(.*):(.*)/
   def matcher = (hint =~ derivedFromPattern)
   if (matcher.matches()) {
     return [ bundleName: matcher.group(1), version: matcher.group(2) ]
@@ -343,7 +364,7 @@ def getDerivedFromHint(hint) {
 }
 
 def getBundlePackageFromHint(hint) {
-  def bundlePackagePattern = /bundle-package=(.*):(.*)/;
+  def bundlePackagePattern = /bundle-package=(.*):(.*)/
   def matcher = (hint =~ bundlePackagePattern)
   if (matcher.matches()) {
     return [ bundleName: matcher.group(1), packageName: matcher.group(2) ]
@@ -353,8 +374,16 @@ def getBundlePackageFromHint(hint) {
   }
 }
 
+def hasFromAemSdkApiHint(hint) {
+  return hint == "from-aem-sdk-api"
+}
+
 def getBundleVersion(bundleData, bundleName) {
   return bundleData[bundleName]?.version
+}
+
+def getAemSdkApiVersion(aemSdkApiData, groupId, artifactId) {
+  return aemSdkApiData[groupId + ':' + artifactId]?.version
 }
 
 class BundleData {

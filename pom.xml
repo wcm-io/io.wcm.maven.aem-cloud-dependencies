@@ -21,7 +21,7 @@
 
   <groupId>io.wcm.maven</groupId>
   <artifactId>io.wcm.maven.aem-cloud-dependencies</artifactId>
-  <version>2020.12.4621.20201204T184518Z-201201.0000</version>
+  <version>2020.12.4676.20201216T130744Z-201201.0000</version>
   <packaging>pom</packaging>
 
   <name>AEM Cloud Service Dependencies</name>
@@ -79,7 +79,8 @@
       <dependency>
         <groupId>com.adobe.aem</groupId>
         <artifactId>aem-sdk-api</artifactId>
-        <version>2020.12.4621.20201204T184518Z-201201</version>
+        <!-- update-aem-deps:from-aem-sdk-api -->
+        <version>2020.12.4676.20201216T130744Z-201201</version>
       </dependency>
 
       <!-- OSGI (individual artifacts) -->
@@ -91,8 +92,14 @@
       </dependency>
       <dependency>
         <groupId>org.osgi</groupId>
+        <artifactId>org.osgi.resource</artifactId>
+        <!-- update-aem-deps:bundle-package=org.apache.felix.framework:org.osgi.resource -->
+        <version>1.0.0</version>
+      </dependency>
+      <dependency>
+        <groupId>org.osgi</groupId>
         <artifactId>org.osgi.service.component</artifactId>
-        <!-- update-aem-deps:bundle-package=org.apache.felix.scr:org.osgi.service.component -->
+        <!-- update-aem-deps:from-aem-sdk-api -->
         <version>1.4.0</version>
       </dependency>
       <dependency>
@@ -127,42 +134,60 @@
       </dependency>
       <dependency>
         <groupId>org.osgi</groupId>
+        <artifactId>org.osgi.service.log</artifactId>
+        <!-- update-aem-deps:bundle-package=org.apache.felix.log:org.osgi.service.log -->
+        <version>1.4.0</version>
+      </dependency>
+      <dependency>
+        <groupId>org.osgi</groupId>
         <artifactId>org.osgi.util.converter</artifactId>
         <!-- update-aem-deps:derived-from=org.apache.felix.converter:1.0.14 -->
         <version>1.0.1</version>
+      </dependency>
+      <dependency>
+        <groupId>org.osgi</groupId>
+        <artifactId>org.osgi.util.tracker</artifactId>
+        <!-- update-aem-deps:bundle-package=org.apache.felix.framework:org.osgi.util.tracker -->
+        <version>1.5.2</version>
       </dependency>
 
       <!-- OSGi annotations -->
       <dependency>
         <groupId>org.osgi</groupId>
         <artifactId>org.osgi.annotation.bundle</artifactId>
-        <!-- update-aem-deps:ignore -->
+        <!-- update-aem-deps:from-aem-sdk-api -->
         <version>1.0.0</version>
       </dependency>
       <dependency>
         <groupId>org.osgi</groupId>
         <artifactId>org.osgi.annotation.versioning</artifactId>
-        <!-- update-aem-deps:ignore -->
+        <!-- update-aem-deps:from-aem-sdk-api -->
         <version>1.1.0</version>
       </dependency>
       <dependency>
         <groupId>org.osgi</groupId>
         <artifactId>org.osgi.service.component.annotations</artifactId>
-        <!-- update-aem-deps:bundle-package=org.apache.felix.scr:org.osgi.service.component -->
+        <!-- update-aem-deps:from-aem-sdk-api -->
         <version>1.4.0</version>
       </dependency>
       <dependency>
         <groupId>org.osgi</groupId>
         <artifactId>org.osgi.service.metatype.annotations</artifactId>
-        <!-- update-aem-deps:bundle-package=org.apache.felix.metatype:org.osgi.service.metatype -->
+        <!-- update-aem-deps:from-aem-sdk-api -->
         <version>1.4.0</version>
+      </dependency>
+      <dependency>
+        <groupId>org.apache.sling</groupId>
+        <artifactId>org.apache.sling.servlets.annotations</artifactId>
+        <!-- update-aem-deps:from-aem-sdk-api -->
+        <version>1.2.4</version>
       </dependency>
 
       <!-- OSGI (aggregated artifacts - it is recommended to use the individual artifacts instead) -->
       <dependency>
         <groupId>org.osgi</groupId>
         <artifactId>osgi.core</artifactId>
-        <!-- update-aem-deps:ignore -->
+        <!-- update-aem-deps:from-aem-sdk-api -->
         <version>7.0.0</version>
       </dependency>
       <dependency>
@@ -422,6 +447,12 @@
         <version>1.2.6</version>
       </dependency>
       <dependency>
+        <groupId>org.apache.johnzon</groupId>
+        <artifactId>johnzon-core</artifactId>
+        <!-- update-aem-deps:derived-from=org.apache.sling.commons.johnzon:1.2.6 -->
+        <version>1.2.8</version>
+      </dependency>
+      <dependency>
         <groupId>org.apache.geronimo.specs</groupId>
         <artifactId>geronimo-json_1.1_spec</artifactId>
         <!-- update-aem-deps:derived-from=org.apache.sling.commons.johnzon:1.2.6 -->
@@ -479,6 +510,12 @@
       </dependency>
       <dependency>
         <groupId>org.apache.sling</groupId>
+        <artifactId>org.apache.sling.adapter</artifactId>
+        <version>2.1.10</version>
+        <scope>compile</scope>
+      </dependency>
+      <dependency>
+        <groupId>org.apache.sling</groupId>
         <artifactId>org.apache.sling.i18n</artifactId>
         <version>2.5.14</version>
       </dependency>
@@ -513,6 +550,11 @@
         <groupId>org.apache.sling</groupId>
         <artifactId>org.apache.sling.xss</artifactId>
         <version>2.2.6</version>
+      </dependency>
+      <dependency>
+        <groupId>org.apache.sling</groupId>
+        <artifactId>org.apache.sling.featureflags</artifactId>
+        <version>1.2.2</version>
       </dependency>
       <dependency>
         <groupId>org.apache.jackrabbit</groupId>
@@ -659,6 +701,15 @@
             <versionsForceUpdate>true</versionsForceUpdate>
             <postReleaseGoals>clean deploy -Prelease-profile</postReleaseGoals>
             <commitMessagePrefix xml:space="preserve">[gitflow-maven-plugin] </commitMessagePrefix>
+            <commitMessages>
+              <!-- Add version number to commit messages -->
+              <hotfixStartMessage>Update versions for hotfix @{version}</hotfixStartMessage>
+              <hotfixFinishMessage>Update for next development version @{version}</hotfixFinishMessage>
+              <hotfixVersionUpdateMessage>Update to hotfix version @{version}</hotfixVersionUpdateMessage>
+              <releaseStartMessage>Update versions for release @{version}</releaseStartMessage>
+              <releaseFinishMessage>Update for next development version @{version}</releaseFinishMessage>
+              <releaseVersionUpdateMessage>Update for next development version @{version}</releaseVersionUpdateMessage>
+            </commitMessages>
           </configuration>
         </plugin>
         <plugin>
