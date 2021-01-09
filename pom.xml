@@ -79,6 +79,7 @@
       <dependency>
         <groupId>com.adobe.aem</groupId>
         <artifactId>aem-sdk-api</artifactId>
+        <!-- update-aem-deps:from-aem-sdk-api -->
         <version>2020.12.4676.20201216T130744Z-201201</version>
       </dependency>
 
@@ -98,7 +99,7 @@
       <dependency>
         <groupId>org.osgi</groupId>
         <artifactId>org.osgi.service.component</artifactId>
-        <!-- update-aem-deps:bundle-package=org.apache.felix.scr:org.osgi.service.component -->
+        <!-- update-aem-deps:from-aem-sdk-api -->
         <version>1.4.0</version>
       </dependency>
       <dependency>
@@ -154,31 +155,31 @@
       <dependency>
         <groupId>org.osgi</groupId>
         <artifactId>org.osgi.annotation.bundle</artifactId>
-        <!-- update-aem-deps:ignore -->
+        <!-- update-aem-deps:from-aem-sdk-api -->
         <version>1.0.0</version>
       </dependency>
       <dependency>
         <groupId>org.osgi</groupId>
         <artifactId>org.osgi.annotation.versioning</artifactId>
-        <!-- update-aem-deps:ignore -->
+        <!-- update-aem-deps:from-aem-sdk-api -->
         <version>1.1.0</version>
       </dependency>
       <dependency>
         <groupId>org.osgi</groupId>
         <artifactId>org.osgi.service.component.annotations</artifactId>
-        <!-- update-aem-deps:bundle-package=org.apache.felix.scr:org.osgi.service.component -->
+        <!-- update-aem-deps:from-aem-sdk-api -->
         <version>1.4.0</version>
       </dependency>
       <dependency>
         <groupId>org.osgi</groupId>
         <artifactId>org.osgi.service.metatype.annotations</artifactId>
-        <!-- update-aem-deps:bundle-package=org.apache.felix.metatype:org.osgi.service.metatype -->
+        <!-- update-aem-deps:from-aem-sdk-api -->
         <version>1.4.0</version>
       </dependency>
       <dependency>
         <groupId>org.apache.sling</groupId>
         <artifactId>org.apache.sling.servlets.annotations</artifactId>
-        <!-- update-aem-deps:ignore -->
+        <!-- update-aem-deps:from-aem-sdk-api -->
         <version>1.2.4</version>
       </dependency>
 
@@ -186,7 +187,7 @@
       <dependency>
         <groupId>org.osgi</groupId>
         <artifactId>osgi.core</artifactId>
-        <!-- update-aem-deps:ignore -->
+        <!-- update-aem-deps:from-aem-sdk-api -->
         <version>7.0.0</version>
       </dependency>
       <dependency>
