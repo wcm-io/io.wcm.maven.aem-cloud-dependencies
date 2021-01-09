@@ -37,6 +37,34 @@ To import the dependencies in your AEM project use:
 We do not make new releases of this dependency POM for each single AEM cloud release, but we plan to publish at least one updated version per month. If you need a new version contact us a the [mailing list](https://wcm.io/mailing-lists.html).
 
 
+## update-aem-deps.groovy
+
+The script `update-aem-deps.groovy` provides a way to update the versions in a POM in a (nearly) automatic way when a new AEM Cloud SDK version is released. Preparations to execute the script:
+
+* Download the latest AEM SDK from https://experience.adobe.com/#/downloads/content/software-distribution/en/aemcloud.html
+* Extract the Quickstart JAR and start it normally as author instance on port 4502 and wait until it's started up
+* Execute `update-aem-deps.groovy`
+* Pay attention on the log messages of the script. If there is any WARN or ERROR reported there is a problem which needs to be resolved manually.
+* The script writes the changes directly to the POM. Inspect the changes and make sure everything is correct before committing it.
+
+What does the script do:
+
+* Read the AEM SDK version from the local instance
+* Get the matching AEM SDK POM from Maven Central
+* Read all bundle versions, package versions from local AEM instance and dependency versions from AEM SDK POM
+* Update all dependencies in the POM to the versions found in the locale instance and the AEM SDK POM
+
+As some dependencies are repackaged or embedded in other bundles there are a couple of "hints" put before the version tags in the POM that help the script to detect the right versions. The following hints are supported:
+
+| Hint                                                                 | Description
+|----------------------------------------------------------------------|---------------
+| `update-aem-deps:bundle=<bundleSymbolicName>`                        | Read the bundle version from the bundle with the given symbolic name in the local AEM instance.
+| `update-aem-deps:bundle-package=<packageName>`                       | Read the package version of the given package exported by any bundle in the local AEM instance.
+| `update-aem-deps:derived-from=<bundleSymbolicName>:<bundleVersion>`  | The dependency is embedded in the bundle with the given symbolic name and the given version. There is no support to extract the version from this bundle, you have to do it manually. But if the targeted bundle has new version you get a warning that the bundle has changed and you have to check manually if the embedded dependency version has changed as well and update the version and the `derived-from` hint in the POM manually.
+| `update-aem-deps:from-aem-sdk-api`                                   | Read the version from the `dependencies` section of the AEM SDK API POM.
+| `update-aem-deps:ignore`                                             | Ignore the dependency in the script, you have to maintain the version manually.
+
+
 ## Build from sources
 
 If you want to build wcm.io from sources make sure you have configured all [Maven Repositories](https://wcm.io/maven.html) in your settings.xml.
