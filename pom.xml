@@ -21,7 +21,7 @@
 
   <groupId>io.wcm.maven</groupId>
   <artifactId>io.wcm.maven.aem-cloud-dependencies</artifactId>
-  <version>2020.12.4676.20201216T130744Z-201201.0000</version>
+  <version>2021.1.4738.20210107T143101Z-201217.0000</version>
   <packaging>pom</packaging>
 
   <name>AEM Cloud Service Dependencies</name>
@@ -80,7 +80,7 @@
         <groupId>com.adobe.aem</groupId>
         <artifactId>aem-sdk-api</artifactId>
         <!-- update-aem-deps:from-aem-sdk-api -->
-        <version>2020.12.4676.20201216T130744Z-201201</version>
+        <version>2021.1.4738.20210107T143101Z-201217</version>
       </dependency>
 
       <!-- OSGI (individual artifacts) -->
@@ -264,7 +264,7 @@
       <dependency>
         <groupId>com.adobe.cq</groupId>
         <artifactId>core.wcm.components.core</artifactId>
-        <version>2.13.0</version>
+        <version>2.13.2</version>
       </dependency>
       <dependency>
         <groupId>org.slf4j</groupId>
@@ -281,12 +281,6 @@
         <groupId>org.apache.cocoon</groupId>
         <artifactId>cocoon-xml</artifactId>
         <version>2.0.2</version>
-      </dependency>
-      <dependency>
-        <groupId>org.apache.xmlgraphics</groupId>
-        <artifactId>fop</artifactId>
-        <!-- update-aem-deps:derived-from=com.day.commons.osgi.wrapper.fop:1.16.0 -->
-        <version>1.0</version>
       </dependency>
       <dependency>
         <groupId>org.apache.commons</groupId>
