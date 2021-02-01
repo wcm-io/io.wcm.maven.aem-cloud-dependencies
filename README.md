@@ -1,13 +1,13 @@
 <img src="https://wcm.io/images/favicon-16@2x.png"/> wcm.io AEM Cloud Service Dependencies
 ======
-[![Build Status](https://travis-ci.com/wcm-io/wcm-io-tooling-aem-cloud-dependencies.png?branch=develop)](https://travis-ci.com/wcm-io/wcm-io-tooling-aem-cloud-dependencies)
+[![Build](https://github.com/wcm-io/wcm-io-tooling-aem-cloud-dependencies/workflows/Build/badge.svg?branch=develop)](https://github.com/wcm-io/wcm-io-tooling-aem-cloud-dependencies/actions?query=workflow%3ABuild+branch%3Adevelop)
 
 Maven dependencies for the AEM Cloud Service SDK
 
 Documentation: https://wcm.io/tooling/maven/aem-dependencies.html<br/>
 Issues: https://wcm-io.atlassian.net/browse/WTOOL<br/>
 Wiki: https://wcm-io.atlassian.net/wiki/<br/>
-Continuous Integration: https://travis-ci.com/wcm-io/wcm-io-tooling-aem-cloud-dependencies/<br/>
+Continuous Integration: https://github.com/wcm-io/wcm-io-tooling-aem-cloud-dependencies/actions<br/>
 Commercial support: https://wcm.io/commercial-support.html
 
 
@@ -69,7 +69,7 @@ As some dependencies are repackaged or embedded in other bundles there are a cou
 
 If you want to build wcm.io from sources make sure you have configured all [Maven Repositories](https://wcm.io/maven.html) in your settings.xml.
 
-See [Travis Maven settings.xml](https://github.com/wcm-io/wcm-io-tooling-aem-cloud-dependencies/blob/master/.travis.maven-settings.xml) for an example with a full configuration.
+See [Maven Settings](https://github.com/wcm-io/wcm-io-tooling-aem-cloud-dependencies/blob/develop/.maven-settings.xml) for an example with a full configuration.
 
 Then you can build using
 
