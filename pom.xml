@@ -21,7 +21,7 @@
 
   <groupId>io.wcm.maven</groupId>
   <artifactId>io.wcm.maven.aem-cloud-dependencies</artifactId>
-  <version>2021.2.4887.20210204T154817Z-210128.0000</version>
+  <version>2021.2.4887.20210204T154817Z-210128.0001</version>
   <packaging>pom</packaging>
 
   <name>AEM Cloud Service Dependencies</name>
@@ -512,6 +512,11 @@
         <groupId>org.apache.sling</groupId>
         <artifactId>org.apache.sling.scripting.sightly.compiler.java</artifactId>
         <version>1.2.2-1.4.0</version>
+      </dependency>
+      <dependency>
+        <groupId>org.apache.sling</groupId>
+        <artifactId>org.apache.sling.scripting.sightly.runtime</artifactId>
+        <version>1.2.4-1.4.0</version>
       </dependency>
       <dependency>
         <groupId>org.apache.sling</groupId>
