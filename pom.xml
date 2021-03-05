@@ -431,7 +431,9 @@
       <dependency>
         <groupId>org.apache.sling</groupId>
         <artifactId>org.apache.sling.serviceusermapper</artifactId>
-        <version>1.5.2</version>
+        <!-- Stick with 1.4.6 until osgi-mock support constructor injection (SLING-10124) -->
+        <!-- update-aem-deps:derived-from=org.apache.sling.serviceusermapper:1.5.2 -->
+        <version>1.4.6</version>
       </dependency>
       <dependency>
         <groupId>org.apache.sling</groupId>
