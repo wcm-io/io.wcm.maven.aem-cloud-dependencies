@@ -21,7 +21,7 @@
 
   <groupId>io.wcm.maven</groupId>
   <artifactId>io.wcm.maven.aem-cloud-dependencies</artifactId>
-  <version>2021.3.5087.20210322T071003Z-210225.0000-SNAPSHOT</version>
+  <version>2021.3.5087.20210322T071003Z-210225.0000</version>
   <packaging>pom</packaging>
 
   <name>AEM Cloud Service Dependencies</name>
