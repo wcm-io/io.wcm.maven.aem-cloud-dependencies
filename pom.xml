@@ -21,7 +21,7 @@
 
   <groupId>io.wcm.maven</groupId>
   <artifactId>io.wcm.maven.aem-cloud-dependencies</artifactId>
-  <version>2021.4.5139.20210407T003220Z-210325.0000</version>
+  <version>2021.4.5226.20210427T070726Z-210325.0000</version>
   <packaging>pom</packaging>
 
   <name>AEM Cloud Service Dependencies</name>
@@ -85,7 +85,7 @@
         <groupId>com.adobe.aem</groupId>
         <artifactId>aem-sdk-api</artifactId>
         <!-- update-aem-deps:from-aem-sdk-api -->
-        <version>2021.4.5139.20210407T003220Z-210325</version>
+        <version>2021.4.5226.20210427T070726Z-210325</version>
       </dependency>
 
       <!-- OSGI (individual artifacts) -->
@@ -323,6 +323,8 @@
       <dependency>
         <groupId>com.day.commons.osgi.wrapper</groupId>
         <artifactId>com.day.commons.osgi.wrapper.commons-httpclient</artifactId>
+        <!-- Latest version not available on Maven Central -->
+        <!-- update-aem-deps:derived-from=com.day.commons.osgi.wrapper.commons-httpclient:3.1.0.024 -->
         <version>3.1.0.018</version>
       </dependency>
       <dependency>
@@ -424,8 +426,8 @@
       <dependency>
         <groupId>org.apache.sling</groupId>
         <artifactId>org.apache.sling.resourceresolver</artifactId>
-        <!-- Stick with 1.7.0 until a problem with generating illegal queries is solved (SLING-10167) -->
-        <!-- update-aem-deps:derived-from=org.apache.sling.resourceresolver:1.7.2 -->
+        <!-- Stick with 1.7.0 until problems with versions 1.7.2 and 1.7.4 are solved (SLING-10167, SLING-10346) -->
+        <!-- update-aem-deps:derived-from=org.apache.sling.resourceresolver:1.7.4 -->
         <version>1.7.0</version>
       </dependency>
       <dependency>
