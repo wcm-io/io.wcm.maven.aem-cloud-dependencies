@@ -21,7 +21,7 @@
 
   <groupId>io.wcm.maven</groupId>
   <artifactId>io.wcm.maven.aem-cloud-dependencies</artifactId>
-  <version>2021.5.5343.20210524T070738Z-210429.0000</version>
+  <version>2021.6.5382.20210602T190018Z-210527.0000</version>
   <packaging>pom</packaging>
 
   <name>AEM Cloud Service Dependencies</name>
@@ -85,7 +85,7 @@
         <groupId>com.adobe.aem</groupId>
         <artifactId>aem-sdk-api</artifactId>
         <!-- update-aem-deps:from-aem-sdk-api -->
-        <version>2021.5.5343.20210524T070738Z-210429</version>
+        <version>2021.6.5382.20210602T190018Z-210527</version>
       </dependency>
 
       <!-- OSGI (individual artifacts) -->
@@ -160,6 +160,12 @@
         <artifactId>org.osgi.dto</artifactId>
         <!-- update-aem-deps:bundle-package=org.apache.felix.framework:org.osgi.dto -->
         <version>1.1.0</version>
+      </dependency>
+      <dependency>
+        <groupId>org.osgi</groupId>
+        <artifactId>org.osgi.service.url</artifactId>
+        <!-- update-aem-deps:bundle-package=org.apache.felix.framework:org.osgi.service.url -->
+        <version>1.0.0</version>
       </dependency>
 
       <!-- OSGi annotations -->
@@ -422,7 +428,7 @@
       <dependency>
         <groupId>org.apache.sling</groupId>
         <artifactId>org.apache.sling.api</artifactId>
-        <version>2.22.0</version>
+        <version>2.23.6</version>
       </dependency>
       <dependency>
         <groupId>org.apache.sling</groupId>
@@ -432,9 +438,7 @@
       <dependency>
         <groupId>org.apache.sling</groupId>
         <artifactId>org.apache.sling.resourceresolver</artifactId>
-        <!-- Stick with 1.7.0 until problems with versions 1.7.2 and 1.7.4 are solved (SLING-10167, SLING-10346) -->
-        <!-- update-aem-deps:derived-from=org.apache.sling.resourceresolver:1.7.4 -->
-        <version>1.7.0</version>
+        <version>1.7.6</version>
       </dependency>
       <dependency>
         <groupId>org.apache.sling</groupId>
@@ -496,7 +500,7 @@
       <dependency>
         <groupId>org.apache.sling</groupId>
         <artifactId>org.apache.sling.scripting.core</artifactId>
-        <version>2.3.4</version>
+        <version>2.3.6</version>
         <exclusions>
           <exclusion>
             <groupId>org.osgi</groupId>
@@ -511,7 +515,7 @@
       <dependency>
         <groupId>org.apache.sling</groupId>
         <artifactId>org.apache.sling.scripting.sightly</artifactId>
-        <version>1.4.6-1.4.0</version>
+        <version>1.4.8-1.4.0</version>
       </dependency>
       <dependency>
         <groupId>org.apache.sling</groupId>
