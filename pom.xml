@@ -21,7 +21,7 @@
 
   <groupId>io.wcm.maven</groupId>
   <artifactId>io.wcm.maven.aem-cloud-dependencies</artifactId>
-  <version>2021.6.5382.20210602T190018Z-210527.0000</version>
+  <version>2021.6.5540.20210615T210737Z-210527.0000</version>
   <packaging>pom</packaging>
 
   <name>AEM Cloud Service Dependencies</name>
@@ -85,7 +85,7 @@
         <groupId>com.adobe.aem</groupId>
         <artifactId>aem-sdk-api</artifactId>
         <!-- update-aem-deps:from-aem-sdk-api -->
-        <version>2021.6.5382.20210602T190018Z-210527</version>
+        <version>2021.6.5540.20210615T210737Z-210527</version>
       </dependency>
 
       <!-- OSGI (individual artifacts) -->
@@ -336,7 +336,7 @@
         <groupId>com.day.commons.osgi.wrapper</groupId>
         <artifactId>com.day.commons.osgi.wrapper.commons-httpclient</artifactId>
         <!-- Latest version not available on Maven Central -->
-        <!-- update-aem-deps:derived-from=com.day.commons.osgi.wrapper.commons-httpclient:3.1.0.024 -->
+        <!-- update-aem-deps:derived-from=com.day.commons.osgi.wrapper.commons-httpclient:3.1.0.26 -->
         <version>3.1.0.018</version>
       </dependency>
       <dependency>
@@ -438,7 +438,7 @@
       <dependency>
         <groupId>org.apache.sling</groupId>
         <artifactId>org.apache.sling.resourceresolver</artifactId>
-        <version>1.7.6</version>
+        <version>1.7.8</version>
       </dependency>
       <dependency>
         <groupId>org.apache.sling</groupId>
