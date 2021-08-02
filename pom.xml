@@ -69,7 +69,7 @@
     <!-- update-aem-deps:bundle=org.apache.jackrabbit.jackrabbit-jcr-commons -->
     <jackrabbit.version>2.20.0</jackrabbit.version>
     <!-- update-aem-deps:derived-from=org.apache.jackrabbit.oak-core:1.40-T20210715153437-563b834 -->
-    <oak.version>1.38.0</oak.version>
+    <oak.version>1.40.0</oak.version>
 
     <!-- repository settings -->
     <distribution.snapshotRepositoryId>ossrh</distribution.snapshotRepositoryId>
