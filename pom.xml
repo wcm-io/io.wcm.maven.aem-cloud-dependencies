@@ -259,7 +259,7 @@
         <version>1.6.2</version>
       </dependency>
 
-      <!-- Dependencies not included in uber jar -->
+      <!-- Dependencies not included in SDK API jar -->
       <dependency>
         <groupId>org.apache.taglibs</groupId>
         <artifactId>taglibs-standard-spec</artifactId>
@@ -290,7 +290,7 @@
         <version>1.2.1</version>
       </dependency>
 
-      <!-- Dependencies included in uber jar - but we keep them here for backward compatibility with older aem-dependencies versions -->
+      <!-- Dependencies included in SDK API jar - but we keep them here for backward compatibility with older aem-dependencies versions -->
       <dependency>
         <groupId>com.adobe.cq</groupId>
         <artifactId>core.wcm.components.core</artifactId>
