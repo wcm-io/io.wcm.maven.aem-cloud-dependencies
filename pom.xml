@@ -21,7 +21,7 @@
 
   <groupId>io.wcm.maven</groupId>
   <artifactId>io.wcm.maven.aem-cloud-dependencies</artifactId>
-  <version>2021.10.5958.20211018T205720Z-210900.0000</version>
+  <version>2021.11.6013.20211105T162756Z-211000.0000</version>
   <packaging>pom</packaging>
 
   <name>AEM Cloud Service Dependencies</name>
@@ -68,7 +68,7 @@
     <slf4j.version>1.7.30</slf4j.version>
     <!-- update-aem-deps:bundle=org.apache.jackrabbit.jackrabbit-jcr-commons -->
     <jackrabbit.version>2.20.0</jackrabbit.version>
-    <!-- update-aem-deps:derived-from=org.apache.jackrabbit.oak-core:1.40-T20211015145427-138016e -->
+    <!-- update-aem-deps:derived-from=org.apache.jackrabbit.oak-core:1.40-T20211019100256-95777e8 -->
     <oak.version>1.40.0</oak.version>
 
     <!-- repository settings -->
@@ -86,7 +86,7 @@
         <groupId>com.adobe.aem</groupId>
         <artifactId>aem-sdk-api</artifactId>
         <!-- update-aem-deps:from-aem-sdk-api -->
-        <version>2021.10.5958.20211018T205720Z-210900</version>
+        <version>2021.11.6013.20211105T162756Z-211000</version>
       </dependency>
 
       <!-- OSGI (individual artifacts) -->
@@ -267,6 +267,12 @@
         <version>1.2.5</version>
       </dependency>
       <dependency>
+        <groupId>org.apache.taglibs</groupId>
+        <artifactId>taglibs-standard-impl</artifactId>
+        <!-- update-aem-deps:derived-from=day-commons-jstl:1.2.2 -->
+        <version>1.2.5</version>
+      </dependency>
+      <dependency>
         <groupId>org.apache.poi</groupId>
         <artifactId>poi</artifactId>
         <!-- update-aem-deps:derived-from=com.adobe.granite.poi:2.0.42 -->
@@ -435,6 +441,12 @@
         <artifactId>standard</artifactId>
         <!-- update-aem-deps:derived-from=day-commons-jstl:1.2.2 -->
         <version>1.1.2</version>
+      </dependency>
+      <dependency>
+        <groupId>javax.servlet.jsp.jstl</groupId>
+        <artifactId>jstl-api</artifactId>
+        <!-- update-aem-deps:derived-from=day-commons-jstl:1.2.2 -->
+        <version>1.2</version>
       </dependency>
 
       <!-- Dependencies that may required by AEM mocks/Sling mocks with version included in this AEM version -->
