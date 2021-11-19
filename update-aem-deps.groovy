@@ -117,6 +117,7 @@ def readAemUrl(relativeUrl) {
 
 // reads the AEM version from locale AEM instance and finds the matching AEM SDK version in the maven repository
 def resolveAemSdkVersion() {
+  // PLEASE NOTE: this works only when a valid 'license.properties' is located beneath the quickstart JAR file
   def aemVersion = (readAemUrl('/system/console/status-productinfo.txt') =~ /Adobe Experience Manager \((.*)\)/)[0][1]
 
   // need to transform from a AEM version like '2020.4.2793.20200403T195013Z' to '2020.04.2793.20200403T195013Z-200130'
