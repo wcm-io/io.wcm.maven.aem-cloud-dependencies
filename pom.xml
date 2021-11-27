@@ -624,6 +624,12 @@
         <artifactId>org.apache.jackrabbit.vault</artifactId>
         <version>3.4.0</version>
       </dependency>
+      <dependency>
+        <groupId>org.slf4j</groupId>
+        <artifactId>slf4j-simple</artifactId>
+        <!-- update-aem-deps:ignore -->
+        <version>${slf4j.version}</version>
+      </dependency>
 
     </dependencies>
   </dependencyManagement>
