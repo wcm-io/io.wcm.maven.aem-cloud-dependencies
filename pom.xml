@@ -21,7 +21,7 @@
 
   <groupId>io.wcm.maven</groupId>
   <artifactId>io.wcm.maven.aem-cloud-dependencies</artifactId>
-  <version>2021.11.6058.20211123T163652Z-211000.0000</version>
+  <version>2021.12.6151.20211217T120950Z-211100.0000</version>
   <packaging>pom</packaging>
 
   <name>AEM Cloud Service Dependencies</name>
@@ -68,7 +68,7 @@
     <slf4j.version>1.7.30</slf4j.version>
     <!-- update-aem-deps:bundle=org.apache.jackrabbit.jackrabbit-jcr-commons -->
     <jackrabbit.version>2.20.0</jackrabbit.version>
-    <!-- update-aem-deps:derived-from=org.apache.jackrabbit.oak-core:1.40-T20211119100624-06dae64 -->
+    <!-- update-aem-deps:derived-from=org.apache.jackrabbit.oak-core:1.40-T20211203153857-c006959 -->
     <oak.version>1.40.0</oak.version>
 
     <!-- repository settings -->
@@ -86,7 +86,7 @@
         <groupId>com.adobe.aem</groupId>
         <artifactId>aem-sdk-api</artifactId>
         <!-- update-aem-deps:from-aem-sdk-api -->
-        <version>2021.11.6058.20211123T163652Z-211000</version>
+        <version>2021.12.6151.20211217T120950Z-211100</version>
       </dependency>
 
       <!-- OSGI (individual artifacts) -->
@@ -197,8 +197,9 @@
       <dependency>
         <groupId>org.apache.sling</groupId>
         <artifactId>org.apache.sling.servlets.annotations</artifactId>
-        <!-- update-aem-deps:from-aem-sdk-api -->
-        <version>1.2.4</version>
+        <!-- aem-sdk-api POM contains an outdated version -->
+        <!-- update-aem-deps:ignore -->
+        <version>1.2.6</version>
       </dependency>
       <dependency>
         <groupId>org.apache.sling</groupId>
@@ -348,7 +349,19 @@
       </dependency>
       <dependency>
         <groupId>org.apache.httpcomponents</groupId>
+        <artifactId>httpcore-osgi</artifactId>
+        <!-- update-aem-deps:bundle=org.apache.httpcomponents.httpcore -->
+        <version>4.4.8</version>
+      </dependency>
+      <dependency>
+        <groupId>org.apache.httpcomponents</groupId>
         <artifactId>httpclient</artifactId>
+        <version>4.5.13</version>
+      </dependency>
+      <dependency>
+        <groupId>org.apache.httpcomponents</groupId>
+        <artifactId>httpclient-osgi</artifactId>
+        <!-- update-aem-deps:bundle=org.apache.httpcomponents.httpclient -->
         <version>4.5.13</version>
       </dependency>
       <dependency>
@@ -530,7 +543,7 @@
       <dependency>
         <groupId>org.apache.sling</groupId>
         <artifactId>org.apache.sling.scripting.core</artifactId>
-        <!-- update-aem-deps:derived-from=org.apache.sling.scripting.core:2.4.1-T20211122115952-1fa8067 -->
+        <!-- update-aem-deps:derived-from=org.apache.sling.scripting.core:2.4.1-T20211125150046-20d153a -->
         <version>2.4.0</version>
         <exclusions>
           <exclusion>
