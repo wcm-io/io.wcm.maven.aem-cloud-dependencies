@@ -729,17 +729,17 @@
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-deploy-plugin</artifactId>
-          <version>3.0.0-M1</version>
+          <version>3.0.0-M2</version>
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-javadoc-plugin</artifactId>
-          <version>3.3.0</version>
+          <version>3.3.1</version>
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-release-plugin</artifactId>
-          <version>3.0.0-M4</version>
+          <version>3.0.0-M5</version>
           <configuration>
             <autoVersionSubmodules>true</autoVersionSubmodules>
             <goals>deploy</goals>
@@ -748,19 +748,19 @@
             <dependency>
               <groupId>org.apache.maven.scm</groupId>
               <artifactId>maven-scm-provider-gitexe</artifactId>
-              <version>1.11.2</version>
+              <version>1.12.2</version>
             </dependency>
           </dependencies>
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-site-plugin</artifactId>
-          <version>3.9.1</version>
+          <version>3.10.0</version>
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-enforcer-plugin</artifactId>
-          <version>3.0.0-M3</version>
+          <version>3.0.0</version>
         </plugin>
         <plugin>
           <groupId>org.sonatype.plugins</groupId>
@@ -770,7 +770,7 @@
         <plugin>
           <groupId>com.amashchenko.maven.plugin</groupId>
           <artifactId>gitflow-maven-plugin</artifactId>
-          <version>1.16.0</version>
+          <version>1.17.0</version>
           <inherited>false</inherited>
           <configuration>
             <skipTestProject>true</skipTestProject>
@@ -788,16 +788,6 @@
               <releaseFinishMessage>Update for next development version @{version}</releaseFinishMessage>
               <releaseVersionUpdateMessage>Update for next development version @{version}</releaseVersionUpdateMessage>
             </commitMessages>
-          </configuration>
-        </plugin>
-        <plugin>
-          <groupId>external.atlassian.jgitflow</groupId>
-          <artifactId>jgitflow-maven-plugin</artifactId>
-          <version>1.0-m5.1</version>
-          <inherited>false</inherited>
-          <configuration>
-            <scmCommentPrefix xml:space="preserve">[jgitflow-maven-plugin] </scmCommentPrefix>
-            <eol>lf</eol>
           </configuration>
         </plugin>
       </plugins>
