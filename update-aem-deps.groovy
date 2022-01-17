@@ -31,20 +31,25 @@ LOCAL_AEM_PASSWORD = 'admin'
 //----------------------------------------------------------------------
 
 @Grab('org.slf4j:slf4j-simple:1.7.30')
-@Grab('io.github.http-builder-ng:http-builder-ng-core:1.0.4')
 @Grab('jaxen:jaxen:1.1.6')
 @GrabExclude('jdom:jdom')
-@Grab('org.jdom:jdom2:2.0.6')
+@Grab('org.jdom:jdom2:2.0.6.1')
 
 import org.jdom2.*
 import org.jdom2.filter.*
 import org.jdom2.input.*
 import org.jdom2.xpath.*
 import org.jdom2.output.*
-import groovyx.net.http.HttpBuilder
+import groovy.xml.XmlSlurper
 import groovy.json.JsonSlurper
 import groovy.grape.Grape
 import org.slf4j.LoggerFactory
+import java.net.Authenticator
+import java.net.PasswordAuthentication
+import java.net.http.HttpClient
+import java.net.http.HttpRequest
+import java.net.http.HttpResponse
+import java.time.Duration
 import java.util.regex.Pattern
 
 AEM_SDK_MAVEN_REPO = 'https://repo1.maven.org/maven2'
@@ -55,7 +60,7 @@ exitWithFailure = false
 
 // detect AEM SDK running on local machine
 def aemSdkVersion = resolveAemSdkVersion()
-log.info 'AEM SDK Version: ' + aemSdkVersion
+log.info "AEM SDK Version: ${aemSdkVersion}"
 
 // get versions from AEM SDK API POM
 log.info 'Reading versions defined in AEM SDK API POM...'
@@ -105,13 +110,33 @@ if (exitWithFailure) {
 def readAemUrl(relativeUrl) {
   def url = LOCAL_AEM_URL + relativeUrl
   try {
-    return HttpBuilder.configure {
-      request.uri = url
-      request.auth.basic LOCAL_AEM_USER, LOCAL_AEM_PASSWORD
-    }.get()
+    HttpClient client = HttpClient.newBuilder()
+        .connectTimeout(Duration.ofSeconds(10))
+        .authenticator(new Authenticator() {   
+            public PasswordAuthentication getPasswordAuthentication() {
+                return new PasswordAuthentication(LOCAL_AEM_USER, LOCAL_AEM_PASSWORD.toCharArray())
+            }
+        })
+        .version(HttpClient.Version.HTTP_1_1)
+        .build()
+    HttpRequest request = HttpRequest.newBuilder()
+        .uri(URI.create(url))
+        .build()
+    HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString())
+    if (response.statusCode() == 200) {
+      if (relativeUrl.endsWith('.json')) {
+        return new JsonSlurper().parseText(response.body())
+      }
+      else {
+        return response.body()
+      }
+    }
+    else {
+      throw new RuntimeException("Call failed with HTTP ${response.statusCode()}")
+    }
   }
   catch (Exception ex) {
-    throw new RuntimeException("Unable to access " + url, ex)
+    throw new RuntimeException("Unable to access ${url}", ex)
   }
 }
 
@@ -319,18 +344,12 @@ def pomValidateDependencies(doc) {
 
     // try to resolve dependency
     try {
+      // this may fail with "Error grabbing grapes", see https://stackoverflow.com/a/51159346 and https://issues.apache.org/jira/browse/GROOVY-8655
       Grape.grab(group: groupId, module: artifactId, version: version)
     }
     catch (Exception ex) {
-      if (ex.message =~ /download failed: javax.mail#javax.mail-api;1.6.2!javax.mail-api.jar/
-          || ex.message =~ /download failed: org.apache.poi#poi-ooxml-schemas;4.0.1!poi-ooxml-schemas.jar/
-          || ex.message =~ /download failed: org.apache.xmlgraphics#fop;1.0!fop.jar/) {
-        // ignore: dependencies cannot be downloaded by grape/ivy - unsure why
-      }
-      else {
-        log.error ex.message
-        exitWithFailure = true
-      }
+      log.error ex.message
+      exitWithFailure = true
     }
   }
 }
