@@ -29,15 +29,15 @@
   <url>https://wcm.io</url>
 
   <scm>
-    <connection>scm:git:https://github.com/wcm-io/wcm-io-tooling-aem-cloud-dependencies.git</connection>
-    <developerConnection>scm:git:https://github.com/wcm-io/wcm-io-tooling-aem-cloud-dependencies.git</developerConnection>
-    <url>https://github.com/wcm-io/wcm-io-tooling-aem-cloud-dependencies</url>
+    <connection>scm:git:https://github.com/wcm-io/io.wcm.maven.aem-cloud-dependencies.git</connection>
+    <developerConnection>scm:git:https://github.com/wcm-io/io.wcm.maven.aem-cloud-dependencies.git</developerConnection>
+    <url>https://github.com/wcm-io/io.wcm.maven.aem-cloud-dependencies</url>
     <tag>HEAD</tag>
   </scm>
 
   <ciManagement>
     <system>GitHub Actions</system>
-    <url>https://github.com/wcm-io/wcm-io-tooling-aem-cloud-dependencies/actions</url>
+    <url>https://github.com/wcm-io/io.wcm.maven.aem-cloud-dependencies/actions</url>
   </ciManagement>
 
   <inceptionYear>2020</inceptionYear>
