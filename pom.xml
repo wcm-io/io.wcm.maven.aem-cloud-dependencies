@@ -741,12 +741,18 @@
           <configuration>
             <autoVersionSubmodules>true</autoVersionSubmodules>
             <goals>deploy</goals>
+            <projectVersionPolicyId>AemCloudDependenciesVersionPolicy</projectVersionPolicyId>
           </configuration>
           <dependencies>
             <dependency>
               <groupId>org.apache.maven.scm</groupId>
               <artifactId>maven-scm-provider-gitexe</artifactId>
               <version>2.0.0-M1</version>
+            </dependency>
+            <dependency>
+              <groupId>io.wcm.maven.release-policies</groupId>
+              <artifactId>io.wcm.maven.release-policies.aem-cloud-dependencies</artifactId>
+              <version>1.0.0</version>
             </dependency>
           </dependencies>
         </plugin>
@@ -786,7 +792,15 @@
               <releaseFinishMessage>Update for next development version @{version}</releaseFinishMessage>
               <releaseVersionUpdateMessage>Update for next development version @{version}</releaseVersionUpdateMessage>
             </commitMessages>
+            <projectVersionPolicyId>AemCloudDependenciesVersionPolicy</projectVersionPolicyId>
           </configuration>
+          <dependencies>
+            <dependency>
+              <groupId>io.wcm.maven.release-policies</groupId>
+              <artifactId>io.wcm.maven.release-policies.aem-cloud-dependencies</artifactId>
+              <version>1.0.0</version>
+            </dependency>
+          </dependencies>
         </plugin>
       </plugins>
     </pluginManagement>
