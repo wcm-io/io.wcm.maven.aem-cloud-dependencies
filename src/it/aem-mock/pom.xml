@@ -42,7 +42,6 @@
 
       <plugin>
         <artifactId>maven-antrun-plugin</artifactId>
-        <version>3.0.0</version>
         <executions>
           <execution>
             <phase>verify</phase>
@@ -55,12 +54,14 @@
                   <arg value="-b"/>
                   <arg value="testing/aemcloud-deps"/>
                   <arg value="--single-branch"/>
+                  <arg value="--depth=1"/>
                   <arg value="https://github.com/wcm-io/io.wcm.testing.aem-mock"/>
                   <arg value="${project.build.directory}/aem-mock"/>
                 </exec>
                 <!-- Verify AEM Mocks build and test with this SNAPSHOT dependencies version -->
                 <exec executable="../../../mvnw" failonerror="true">
                   <arg value="-U"/>
+                  <arg value="-B"/>
                   <arg value="-s"/>
                   <arg value="../../../.maven-settings.xml"/>
                   <arg value="-f"/>
