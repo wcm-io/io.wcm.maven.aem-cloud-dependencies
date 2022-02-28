@@ -21,7 +21,7 @@
 
   <groupId>io.wcm.maven</groupId>
   <artifactId>io.wcm.maven.aem-cloud-dependencies</artifactId>
-  <version>2022.2.6276.20220205T222203Z-220100.0000</version>
+  <version>2022.2.6433.20220223T194056Z-220100.0000</version>
   <packaging>pom</packaging>
 
   <name>AEM Cloud Service Dependencies</name>
@@ -68,7 +68,7 @@
     <slf4j.version>1.7.32</slf4j.version>
     <!-- update-aem-deps:bundle=org.apache.jackrabbit.jackrabbit-jcr-commons -->
     <jackrabbit.version>2.20.0</jackrabbit.version>
-    <!-- update-aem-deps:derived-from=org.apache.jackrabbit.oak-core:1.42-T20220204101131-54f2581 -->
+    <!-- update-aem-deps:derived-from=org.apache.jackrabbit.oak-core:1.42-T20220217155211-c86c8ec -->
     <oak.version>1.42.0</oak.version>
 
     <!-- repository settings -->
@@ -86,7 +86,7 @@
         <groupId>com.adobe.aem</groupId>
         <artifactId>aem-sdk-api</artifactId>
         <!-- update-aem-deps:from-aem-sdk-api -->
-        <version>2022.2.6276.20220205T222203Z-220100</version>
+        <version>2022.2.6433.20220223T194056Z-220100</version>
       </dependency>
 
       <!-- OSGI (individual artifacts) -->
@@ -147,8 +147,8 @@
       <dependency>
         <groupId>org.osgi</groupId>
         <artifactId>org.osgi.util.converter</artifactId>
-        <!-- update-aem-deps:derived-from=org.apache.felix.converter:1.0.18 -->
-        <version>1.0.8</version>
+        <!-- update-aem-deps:derived-from=org.osgi.util.converter:1.0.9.202202082230 -->
+        <version>1.0.9</version>
       </dependency>
       <dependency>
         <groupId>org.osgi</groupId>
@@ -301,13 +301,13 @@
       <dependency>
         <groupId>com.adobe.cq</groupId>
         <artifactId>core.wcm.components.core</artifactId>
-        <version>2.17.14</version>
+        <version>2.18.0</version>
       </dependency>
       <dependency>
         <groupId>com.adobe.cq</groupId>
         <artifactId>core.wcm.components.testing.aem-mock-plugin</artifactId>
         <!-- update-aem-deps:bundle=com.adobe.cq.core.wcm.components.core -->
-        <version>2.17.14</version>
+        <version>2.18.0</version>
       </dependency>
       <dependency>
         <groupId>org.slf4j</groupId>
@@ -481,7 +481,7 @@
       <dependency>
         <groupId>org.apache.sling</groupId>
         <artifactId>org.apache.sling.resourceresolver</artifactId>
-        <version>1.8.2</version>
+        <version>1.8.4</version>
       </dependency>
       <dependency>
         <groupId>org.apache.sling</groupId>
@@ -559,7 +559,7 @@
       <dependency>
         <groupId>org.apache.sling</groupId>
         <artifactId>org.apache.sling.scripting.sightly</artifactId>
-        <version>1.4.14-1.4.0</version>
+        <version>1.4.16-1.4.0</version>
       </dependency>
       <dependency>
         <groupId>org.apache.sling</groupId>
@@ -732,7 +732,7 @@
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-javadoc-plugin</artifactId>
-          <version>3.3.1</version>
+          <version>3.3.2</version>
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
@@ -741,19 +741,25 @@
           <configuration>
             <autoVersionSubmodules>true</autoVersionSubmodules>
             <goals>deploy</goals>
+            <projectVersionPolicyId>AemCloudDependenciesVersionPolicy</projectVersionPolicyId>
           </configuration>
           <dependencies>
             <dependency>
               <groupId>org.apache.maven.scm</groupId>
               <artifactId>maven-scm-provider-gitexe</artifactId>
-              <version>1.12.2</version>
+              <version>2.0.0-M1</version>
+            </dependency>
+            <dependency>
+              <groupId>io.wcm.maven.release-policies</groupId>
+              <artifactId>io.wcm.maven.release-policies.aem-cloud-dependencies</artifactId>
+              <version>1.0.0</version>
             </dependency>
           </dependencies>
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-site-plugin</artifactId>
-          <version>3.10.0</version>
+          <version>3.11.0</version>
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
@@ -768,7 +774,7 @@
         <plugin>
           <groupId>com.amashchenko.maven.plugin</groupId>
           <artifactId>gitflow-maven-plugin</artifactId>
-          <version>1.17.0</version>
+          <version>1.18.0</version>
           <inherited>false</inherited>
           <configuration>
             <skipTestProject>true</skipTestProject>
@@ -786,7 +792,15 @@
               <releaseFinishMessage>Update for next development version @{version}</releaseFinishMessage>
               <releaseVersionUpdateMessage>Update for next development version @{version}</releaseVersionUpdateMessage>
             </commitMessages>
+            <projectVersionPolicyId>AemCloudDependenciesVersionPolicy</projectVersionPolicyId>
           </configuration>
+          <dependencies>
+            <dependency>
+              <groupId>io.wcm.maven.release-policies</groupId>
+              <artifactId>io.wcm.maven.release-policies.aem-cloud-dependencies</artifactId>
+              <version>1.0.0</version>
+            </dependency>
+          </dependencies>
         </plugin>
       </plugins>
     </pluginManagement>
@@ -794,7 +808,7 @@
 
   <profiles>
 
-    <!-- configuration to deploy into maven central -->
+    <!-- Configuration to deploy into maven central -->
     <profile>
       <id>release-profile</id>
       <activation>
@@ -832,6 +846,40 @@
               <!-- Deployed artifacts should go to staging to be reviewed before publish -->
               <autoReleaseAfterClose>false</autoReleaseAfterClose>
             </configuration>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+
+    <!-- Run integration tests -->
+    <profile>
+      <id>run-its</id>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-invoker-plugin</artifactId>
+            <version>3.2.2</version>
+            <configuration>
+              <projectsDirectory>src/it</projectsDirectory>
+              <cloneProjectsTo>${project.build.directory}/it</cloneProjectsTo>
+              <pomIncludes>
+                <pomInclude>**/pom.xml</pomInclude>
+              </pomIncludes>
+              <postBuildHookScript>verify</postBuildHookScript>
+              <streamLogs>true</streamLogs>
+              <encoding>UTF-8</encoding>
+            </configuration>
+            <executions>
+              <execution>
+                <id>integration-test</id>
+                <goals>
+                  <goal>install</goal>
+                  <goal>integration-test</goal>
+                  <goal>verify</goal>
+                </goals>
+              </execution>
+            </executions>
           </plugin>
         </plugins>
       </build>
