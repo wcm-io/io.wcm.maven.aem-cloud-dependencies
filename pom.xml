@@ -21,7 +21,7 @@
 
   <groupId>io.wcm.maven</groupId>
   <artifactId>io.wcm.maven.aem-cloud-dependencies</artifactId>
-  <version>2022.2.6276.20220205T222203Z-220100.0001-SNAPSHOT</version>
+  <version>2022.2.6433.20220223T194056Z-220100.0000-SNAPSHOT</version>
   <packaging>pom</packaging>
 
   <name>AEM Cloud Service Dependencies</name>
@@ -68,7 +68,7 @@
     <slf4j.version>1.7.32</slf4j.version>
     <!-- update-aem-deps:bundle=org.apache.jackrabbit.jackrabbit-jcr-commons -->
     <jackrabbit.version>2.20.0</jackrabbit.version>
-    <!-- update-aem-deps:derived-from=org.apache.jackrabbit.oak-core:1.42-T20220204101131-54f2581 -->
+    <!-- update-aem-deps:derived-from=org.apache.jackrabbit.oak-core:1.42-T20220217155211-c86c8ec -->
     <oak.version>1.42.0</oak.version>
 
     <!-- repository settings -->
@@ -86,7 +86,7 @@
         <groupId>com.adobe.aem</groupId>
         <artifactId>aem-sdk-api</artifactId>
         <!-- update-aem-deps:from-aem-sdk-api -->
-        <version>2022.2.6276.20220205T222203Z-220100</version>
+        <version>2022.2.6433.20220223T194056Z-220100</version>
       </dependency>
 
       <!-- OSGI (individual artifacts) -->
@@ -147,8 +147,8 @@
       <dependency>
         <groupId>org.osgi</groupId>
         <artifactId>org.osgi.util.converter</artifactId>
-        <!-- update-aem-deps:derived-from=org.apache.felix.converter:1.0.18 -->
-        <version>1.0.8</version>
+        <!-- update-aem-deps:derived-from=org.osgi.util.converter:1.0.9.202202082230 -->
+        <version>1.0.9</version>
       </dependency>
       <dependency>
         <groupId>org.osgi</groupId>
@@ -301,13 +301,13 @@
       <dependency>
         <groupId>com.adobe.cq</groupId>
         <artifactId>core.wcm.components.core</artifactId>
-        <version>2.17.14</version>
+        <version>2.18.0</version>
       </dependency>
       <dependency>
         <groupId>com.adobe.cq</groupId>
         <artifactId>core.wcm.components.testing.aem-mock-plugin</artifactId>
         <!-- update-aem-deps:bundle=com.adobe.cq.core.wcm.components.core -->
-        <version>2.17.14</version>
+        <version>2.18.0</version>
       </dependency>
       <dependency>
         <groupId>org.slf4j</groupId>
@@ -481,7 +481,7 @@
       <dependency>
         <groupId>org.apache.sling</groupId>
         <artifactId>org.apache.sling.resourceresolver</artifactId>
-        <version>1.8.2</version>
+        <version>1.8.4</version>
       </dependency>
       <dependency>
         <groupId>org.apache.sling</groupId>
@@ -559,7 +559,7 @@
       <dependency>
         <groupId>org.apache.sling</groupId>
         <artifactId>org.apache.sling.scripting.sightly</artifactId>
-        <version>1.4.14-1.4.0</version>
+        <version>1.4.16-1.4.0</version>
       </dependency>
       <dependency>
         <groupId>org.apache.sling</groupId>
