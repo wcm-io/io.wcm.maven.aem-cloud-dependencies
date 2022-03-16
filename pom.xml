@@ -752,7 +752,7 @@
             <dependency>
               <groupId>io.wcm.maven.release-policies</groupId>
               <artifactId>io.wcm.maven.release-policies.aem-cloud-dependencies</artifactId>
-              <version>1.0.0</version>
+              <version>1.0.2</version>
             </dependency>
           </dependencies>
         </plugin>
@@ -798,7 +798,7 @@
             <dependency>
               <groupId>io.wcm.maven.release-policies</groupId>
               <artifactId>io.wcm.maven.release-policies.aem-cloud-dependencies</artifactId>
-              <version>1.0.0</version>
+              <version>1.0.2</version>
             </dependency>
           </dependencies>
         </plugin>
