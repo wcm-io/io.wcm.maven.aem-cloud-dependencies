@@ -230,7 +230,7 @@ def pomUpdateProperties(doc, bundleData) {
       def derivedFrom = getDerivedFromHint(hint)
       if (derivedFrom) {
         def actualVersion = getBundleVersion(bundleData, derivedFrom.bundleName)
-        if (derivedFrom.version != actualVersion) {
+        if (!matchesVersionWithGlobbing(actualVersion, derivedFrom.version)) {
           if (actualVersion) {
             log.warn "property ${prop.name} is derived from ${derivedFrom.bundleName}:${derivedFrom.version}, but that bundle has currently version ${actualVersion}, check manually"
             exitWithFailure = true
@@ -402,6 +402,21 @@ def getBundleVersion(bundleData, bundleName) {
 
 def getAemSdkApiVersion(aemSdkApiData, groupId, artifactId) {
   return aemSdkApiData[groupId + ':' + artifactId]?.version
+}
+
+def matchesVersionWithGlobbing(actualVersion, expectedVersion) {
+  if (!actualVersion) {
+    return false
+  }
+  if (expectedVersion == actualVersion) {
+    return true
+  }
+  // if expected version contains a '*' interpret this as 'any part of string'
+  if (expectedVersion.contains('*')) {
+    def pattern = Pattern.compile('^' + expectedVersion.replaceAll('\\*','.*') + '$')
+    return pattern.matcher(actualVersion).matches()
+  }
+  return false
 }
 
 class BundleData {
