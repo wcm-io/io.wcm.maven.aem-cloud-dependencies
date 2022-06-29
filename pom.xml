@@ -283,7 +283,7 @@
         <groupId>org.apache.poi</groupId>
         <artifactId>poi</artifactId>
         <!-- update-aem-deps:derived-from=com.adobe.granite.poi:2.0.42 -->
-        <version>4.0.1</version>
+        <version>4.1.1</version>
       </dependency>
       <dependency>
         <groupId>org.apache.poi</groupId>
