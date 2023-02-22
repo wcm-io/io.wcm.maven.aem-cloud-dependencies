@@ -387,7 +387,7 @@
         <groupId>commons-fileupload</groupId>
         <artifactId>commons-fileupload</artifactId>
         <!-- update-aem-deps:bundle=org.apache.commons.commons-fileupload -->
-        <version>1.4</version>
+        <version>1.5</version>
       </dependency>
       <dependency>
         <groupId>org.apache.commons</groupId>
