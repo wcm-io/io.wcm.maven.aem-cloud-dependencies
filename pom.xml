@@ -21,7 +21,7 @@
 
   <groupId>io.wcm.maven</groupId>
   <artifactId>io.wcm.maven.aem-cloud-dependencies</artifactId>
-  <version>2023.2.11289.20230224T170559Z-230100.0001-SNAPSHOT</version>
+  <version>2023.3.11382.20230315T073850Z-230100.0000-SNAPSHOT</version>
   <packaging>pom</packaging>
 
   <name>AEM Cloud Service Dependencies</name>
@@ -67,9 +67,9 @@
     <!-- update-aem-deps:bundle=slf4j.api -->
     <slf4j.version>1.7.32</slf4j.version>
     <!-- update-aem-deps:bundle=org.apache.jackrabbit.jackrabbit-jcr-commons -->
-    <jackrabbit.version>2.20.7</jackrabbit.version>
-    <!-- update-aem-deps:derived-from=org.apache.jackrabbit.oak-core:1.44-* -->
-    <oak.version>1.44.0</oak.version>
+    <jackrabbit.version>2.20.8</jackrabbit.version>
+    <!-- update-aem-deps:derived-from=org.apache.jackrabbit.oak-core:1.48-* -->
+    <oak.version>1.48.0</oak.version>
 
     <!-- repository settings -->
     <distribution.snapshotRepositoryId>ossrh</distribution.snapshotRepositoryId>
@@ -86,7 +86,7 @@
         <groupId>com.adobe.aem</groupId>
         <artifactId>aem-sdk-api</artifactId>
         <!-- update-aem-deps:from-aem-sdk-api -->
-        <version>2023.2.11289.20230224T170559Z-230100</version>
+        <version>2023.3.11382.20230315T073850Z-230100</version>
       </dependency>
 
       <!-- OSGI (individual artifacts) -->
@@ -625,7 +625,6 @@
       <dependency>
         <groupId>org.apache.sling</groupId>
         <artifactId>org.apache.sling.xss</artifactId>
-        <!-- update-aem-deps:derived-from=org.apache.sling.xss:2.3.3-T20230126095510-d6c1c62 -->
         <version>2.3.4</version>
       </dependency>
       <dependency>
