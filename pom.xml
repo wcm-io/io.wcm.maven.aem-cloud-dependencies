@@ -21,7 +21,7 @@
 
   <groupId>io.wcm.maven</groupId>
   <artifactId>io.wcm.maven.aem-cloud-dependencies</artifactId>
-  <version>2023.4.12142.20230526T152858Z-230200.0001-SNAPSHOT</version>
+  <version>2023.6.12255.20230608T053118Z-230400.0000-SNAPSHOT</version>
   <packaging>pom</packaging>
 
   <name>AEM Cloud Service Dependencies</name>
@@ -86,7 +86,7 @@
         <groupId>com.adobe.aem</groupId>
         <artifactId>aem-sdk-api</artifactId>
         <!-- update-aem-deps:from-aem-sdk-api -->
-        <version>2023.4.12142.20230526T152858Z-230200</version>
+        <version>2023.6.12255.20230608T053118Z-230400</version>
       </dependency>
 
       <!-- OSGI (individual artifacts) -->
@@ -282,20 +282,20 @@
       <dependency>
         <groupId>org.apache.poi</groupId>
         <artifactId>poi</artifactId>
-        <!-- update-aem-deps:derived-from=com.adobe.granite.poi:2.0.42 -->
-        <version>4.0.1</version>
+        <!-- update-aem-deps:derived-from=com.adobe.granite.poi:2.1.0 -->
+        <version>5.2.3</version>
       </dependency>
       <dependency>
         <groupId>org.apache.poi</groupId>
         <artifactId>poi-scratchpad</artifactId>
-        <!-- update-aem-deps:derived-from=com.adobe.granite.poi:2.0.42 -->
-        <version>4.0.1</version>
+        <!-- update-aem-deps:derived-from=com.adobe.granite.poi:2.1.0 -->
+        <version>5.2.3</version>
       </dependency>
       <dependency>
         <groupId>org.apache.poi</groupId>
         <artifactId>poi-ooxml</artifactId>
-        <!-- update-aem-deps:derived-from=com.adobe.granite.poi:2.0.42 -->
-        <version>4.0.1</version>
+        <!-- update-aem-deps:derived-from=com.adobe.granite.poi:2.1.0 -->
+        <version>5.2.3</version>
       </dependency>
       <dependency>
         <groupId>com.adobe.granite</groupId>
@@ -313,13 +313,13 @@
       <dependency>
         <groupId>com.adobe.cq</groupId>
         <artifactId>core.wcm.components.core</artifactId>
-        <version>2.22.12</version>
+        <version>2.23.0</version>
       </dependency>
       <dependency>
         <groupId>com.adobe.cq</groupId>
         <artifactId>core.wcm.components.testing.aem-mock-plugin</artifactId>
         <!-- update-aem-deps:bundle=com.adobe.cq.core.wcm.components.core -->
-        <version>2.22.12</version>
+        <version>2.23.0</version>
       </dependency>
       <dependency>
         <groupId>org.slf4j</groupId>
