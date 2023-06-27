@@ -648,6 +648,11 @@
         <version>${oak.version}</version>
       </dependency>
       <dependency>
+        <groupId>org.apache.jackrabbit</groupId>
+        <artifactId>oak-jackrabbit-api</artifactId>
+        <version>${oak.version}</version>
+      </dependency>
+      <dependency>
         <groupId>org.apache.jackrabbit.vault</groupId>
         <artifactId>org.apache.jackrabbit.vault</artifactId>
         <!-- update-aem-deps:derived-from=org.apache.jackrabbit.vault:3.6.9-T20230321120014-870ac10e -->
