@@ -21,7 +21,7 @@
 
   <groupId>io.wcm.maven</groupId>
   <artifactId>io.wcm.maven.aem-cloud-dependencies</artifactId>
-  <version>2023.6.12441.20230623T133322Z-230400.0001-SNAPSHOT</version>
+  <version>2023.7.12585.20230706T160730Z-230601.0000-SNAPSHOT</version>
   <packaging>pom</packaging>
 
   <name>AEM Cloud Service Dependencies</name>
@@ -66,10 +66,10 @@
     <!-- versions -->
     <!-- update-aem-deps:bundle=slf4j.api -->
     <slf4j.version>1.7.32</slf4j.version>
-    <!-- update-aem-deps:derived-from=org.apache.jackrabbit.jackrabbit-jcr-commons:2.20.9.* -->
-    <jackrabbit.version>2.20.9</jackrabbit.version>
-    <!-- update-aem-deps:derived-from=org.apache.jackrabbit.oak-core:1.50-* -->
-    <oak.version>1.50.0</oak.version>
+    <!-- update-aem-deps:bundle=org.apache.jackrabbit.jackrabbit-jcr-commons -->
+    <jackrabbit.version>2.20.10</jackrabbit.version>
+    <!-- update-aem-deps:derived-from=org.apache.jackrabbit.oak-core:1.52-* -->
+    <oak.version>1.52.0</oak.version>
 
     <!-- repository settings -->
     <distribution.snapshotRepositoryId>ossrh</distribution.snapshotRepositoryId>
@@ -86,7 +86,7 @@
         <groupId>com.adobe.aem</groupId>
         <artifactId>aem-sdk-api</artifactId>
         <!-- update-aem-deps:from-aem-sdk-api -->
-        <version>2023.6.12441.20230623T133322Z-230400</version>
+        <version>2023.7.12585.20230706T160730Z-230601</version>
       </dependency>
 
       <!-- OSGI (individual artifacts) -->
@@ -380,7 +380,7 @@
         <groupId>com.day.commons.osgi.wrapper</groupId>
         <artifactId>com.day.commons.osgi.wrapper.commons-httpclient</artifactId>
         <!-- Latest version not available on Maven Central -->
-        <!-- update-aem-deps:derived-from=com.day.commons.osgi.wrapper.commons-httpclient:3.1.0.28 -->
+        <!-- update-aem-deps:derived-from=com.day.commons.osgi.wrapper.commons-httpclient:3.1.0.30 -->
         <version>3.1.0.018</version>
       </dependency>
       <dependency>
@@ -483,7 +483,7 @@
       <dependency>
         <groupId>org.apache.sling</groupId>
         <artifactId>org.apache.sling.api</artifactId>
-        <version>2.27.0</version>
+        <version>2.27.2</version>
       </dependency>
       <dependency>
         <groupId>org.apache.sling</groupId>
@@ -655,7 +655,7 @@
       <dependency>
         <groupId>org.apache.jackrabbit.vault</groupId>
         <artifactId>org.apache.jackrabbit.vault</artifactId>
-        <!-- update-aem-deps:derived-from=org.apache.jackrabbit.vault:3.6.9-T20230321120014-870ac10e -->
+        <!-- update-aem-deps:derived-from=org.apache.jackrabbit.vault:3.6.9-T20230428120001-a23193e -->
         <version>3.6.8</version>
       </dependency>
       <dependency>
