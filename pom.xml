@@ -21,7 +21,7 @@
 
   <groupId>io.wcm.maven</groupId>
   <artifactId>io.wcm.maven.aem-cloud-dependencies</artifactId>
-  <version>2023.8.13099.20230810T160553Z-230702.0000</version>
+  <version>2023.8.13239.20230824T154635Z-230702.0000</version>
   <packaging>pom</packaging>
 
   <name>AEM Cloud Service Dependencies</name>
@@ -67,9 +67,9 @@
     <!-- update-aem-deps:bundle=slf4j.api -->
     <slf4j.version>1.7.32</slf4j.version>
     <!-- update-aem-deps:bundle=org.apache.jackrabbit.jackrabbit-jcr-commons -->
-    <jackrabbit.version>2.20.10</jackrabbit.version>
-    <!-- update-aem-deps:derived-from=org.apache.jackrabbit.oak-core:1.52-* -->
-    <oak.version>1.52.0</oak.version>
+    <jackrabbit.version>2.20.11</jackrabbit.version>
+    <!-- update-aem-deps:derived-from=org.apache.jackrabbit.oak-core:1.54-* -->
+    <oak.version>1.54.0</oak.version>
 
     <!-- repository settings -->
     <distribution.snapshotRepositoryId>ossrh</distribution.snapshotRepositoryId>
@@ -86,7 +86,7 @@
         <groupId>com.adobe.aem</groupId>
         <artifactId>aem-sdk-api</artifactId>
         <!-- update-aem-deps:from-aem-sdk-api -->
-        <version>2023.8.13099.20230810T160553Z-230702</version>
+        <version>2023.8.13239.20230824T154635Z-230702</version>
       </dependency>
 
       <!-- OSGI (individual artifacts) -->
@@ -330,7 +330,7 @@
         <groupId>commons-io</groupId>
         <artifactId>commons-io</artifactId>
         <!-- update-aem-deps:bundle=org.apache.commons.commons-io -->
-        <version>2.11.0</version>
+        <version>2.13.0</version>
       </dependency>
       <dependency>
         <groupId>org.apache.cocoon</groupId>
@@ -393,7 +393,7 @@
         <groupId>org.apache.commons</groupId>
         <artifactId>commons-lang3</artifactId>
         <!-- update-aem-deps:bundle=org.apache.commons.lang3 -->
-        <version>3.12.0</version>
+        <version>3.13.0</version>
       </dependency>
       <dependency>
         <groupId>commons-lang</groupId>
@@ -416,12 +416,12 @@
         <groupId>commons-codec</groupId>
         <artifactId>commons-codec</artifactId>
         <!-- update-aem-deps:bundle=org.apache.commons.commons-codec -->
-        <version>1.15</version>
+        <version>1.16.0</version>
       </dependency>
       <dependency>
         <groupId>org.apache.commons</groupId>
         <artifactId>commons-compress</artifactId>
-        <version>1.21</version>
+        <version>1.23.0</version>
       </dependency>
       <dependency>
         <groupId>org.apache.commons</groupId>
@@ -454,7 +454,7 @@
       <dependency>
         <groupId>com.fasterxml.jackson.core</groupId>
         <artifactId>jackson-databind</artifactId>
-        <version>2.13.4</version>
+        <version>2.13.4.2</version>
       </dependency>
       <dependency>
         <groupId>org.apache.geronimo.specs</groupId>
@@ -655,8 +655,7 @@
       <dependency>
         <groupId>org.apache.jackrabbit.vault</groupId>
         <artifactId>org.apache.jackrabbit.vault</artifactId>
-        <!-- update-aem-deps:derived-from=org.apache.jackrabbit.vault:3.6.9-T20230428120001-a23193e -->
-        <version>3.6.8</version>
+        <version>3.7.0</version>
       </dependency>
       <dependency>
         <groupId>org.slf4j</groupId>

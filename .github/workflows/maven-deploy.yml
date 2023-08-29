@@ -2,6 +2,8 @@
 
 name: Deploy
 
+concurrency: ${{ github.workflow }}
+
 on:
   push:
     branches:
@@ -29,7 +31,7 @@ jobs:
           java-version: 11
           cache: maven
 
-      - name: Build, verify, deploy, generate site
+      - name: Build, verify, deploy
         env:
           SONATYPE_USERNAME: ${{ secrets.SONATYPE_USERNAME }}
           SONATYPE_PASSWORD: ${{ secrets.SONATYPE_PASSWORD }}
