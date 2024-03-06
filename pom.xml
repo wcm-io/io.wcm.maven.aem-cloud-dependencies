@@ -21,7 +21,7 @@
 
   <groupId>io.wcm.maven</groupId>
   <artifactId>io.wcm.maven.aem-cloud-dependencies</artifactId>
-  <version>2023.12.14697.20231215T125030Z-231200.0001-SNAPSHOT</version>
+  <version>2024.2.15262.20240224T002940Z-231200.0000-SNAPSHOT</version>
   <packaging>pom</packaging>
 
   <name>AEM Cloud Service Dependencies</name>
@@ -68,8 +68,8 @@
     <slf4j.version>1.7.32</slf4j.version>
     <!-- update-aem-deps:bundle=org.apache.jackrabbit.jackrabbit-jcr-commons -->
     <jackrabbit.version>2.20.13</jackrabbit.version>
-    <!-- update-aem-deps:derived-from=org.apache.jackrabbit.oak-core:1.58-* -->
-    <oak.version>1.58.0</oak.version>
+    <!-- update-aem-deps:derived-from=org.apache.jackrabbit.oak-core:1.60-* -->
+    <oak.version>1.60.0</oak.version>
 
     <!-- repository settings -->
     <distribution.snapshotRepositoryId>ossrh</distribution.snapshotRepositoryId>
@@ -86,7 +86,7 @@
         <groupId>com.adobe.aem</groupId>
         <artifactId>aem-sdk-api</artifactId>
         <!-- update-aem-deps:from-aem-sdk-api -->
-        <version>2023.12.14697.20231215T125030Z-231200</version>
+        <version>2024.2.15262.20240224T002940Z-231200</version>
       </dependency>
 
       <!-- OSGI (individual artifacts) -->
@@ -444,17 +444,17 @@
       <dependency>
         <groupId>com.fasterxml.jackson.core</groupId>
         <artifactId>jackson-core</artifactId>
-        <version>2.15.2</version>
+        <version>2.16.1</version>
       </dependency>
       <dependency>
         <groupId>com.fasterxml.jackson.core</groupId>
         <artifactId>jackson-annotations</artifactId>
-        <version>2.15.2</version>
+        <version>2.16.1</version>
       </dependency>
       <dependency>
         <groupId>com.fasterxml.jackson.core</groupId>
         <artifactId>jackson-databind</artifactId>
-        <version>2.15.2</version>
+        <version>2.16.1</version>
       </dependency>
       <dependency>
         <groupId>org.apache.geronimo.specs</groupId>
@@ -513,7 +513,7 @@
       <dependency>
         <groupId>org.apache.sling</groupId>
         <artifactId>org.apache.sling.commons.mime</artifactId>
-        <version>2.2.2</version>
+        <version>2.2.4</version>
       </dependency>
       <dependency>
         <groupId>org.apache.sling</groupId>
