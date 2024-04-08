@@ -30,7 +30,7 @@ LOCAL_AEM_PASSWORD = 'admin'
 
 //----------------------------------------------------------------------
 
-@GrabConfig(systemClassLoader= true)
+@GrabConfig(systemClassLoader=true)
 @Grab('org.slf4j:slf4j-simple:2.0.12')
 @Grab('jaxen:jaxen:1.1.6')
 @GrabExclude('jdom:jdom')
