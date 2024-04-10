@@ -532,6 +532,13 @@
         <!-- update-aem-deps:derived-from=org.apache.sling.commons.johnzon:2.0.0 -->
         <version>2.1.1</version>
       </dependency>
+      <!-- Update to latest Sling JSON Content Parser 2.x for unit tests for compatibility with Johnzon 2.0 (switch from javax.json to jakarta.json) -->
+      <dependency>
+        <groupId>org.apache.sling</groupId>
+        <artifactId>org.apache.sling.contentparser.json</artifactId>
+        <!-- update-aem-deps:ignore -->
+        <version>2.1.0-SNAPSHOT</version>
+      </dependency>
       <dependency>
         <groupId>org.apache.sling</groupId>
         <artifactId>org.apache.sling.commons.json</artifactId>
