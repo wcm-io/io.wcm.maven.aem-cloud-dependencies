@@ -2,7 +2,7 @@
   #%L
   wcm.io
   %%
-  Copyright (C) 2020 wcm.io
+  Copyright (C) 2024 wcm.io
   %%
   Licensed under the Apache License, Version 2.0 (the "License");
   you may not use this file except in compliance with the License.
@@ -21,7 +21,7 @@
 
   <groupId>io.wcm.maven</groupId>
   <artifactId>io.wcm.maven.aem-cloud-dependencies</artifactId>
-  <version>2024.4.15860.20240410T113939Z-240300.0001</version>
+  <version>2024.4.15939.20240417T061314Z-240300.0000</version>
   <packaging>pom</packaging>
 
   <name>AEM Cloud Service Dependencies</name>
@@ -67,9 +67,9 @@
     <!-- update-aem-deps:bundle=slf4j.api -->
     <slf4j.version>1.7.32</slf4j.version>
     <!-- update-aem-deps:bundle=org.apache.jackrabbit.jackrabbit-jcr-commons -->
-    <jackrabbit.version>2.20.13</jackrabbit.version>
-    <!-- update-aem-deps:derived-from=org.apache.jackrabbit.oak-core:1.60-* -->
-    <oak.version>1.60.0</oak.version>
+    <jackrabbit.version>2.20.15</jackrabbit.version>
+    <!-- update-aem-deps:derived-from=org.apache.jackrabbit.oak-core -->
+    <oak.version>1.62.0</oak.version>
 
     <!-- repository settings -->
     <distribution.snapshotRepositoryId>ossrh</distribution.snapshotRepositoryId>
@@ -86,7 +86,7 @@
         <groupId>com.adobe.aem</groupId>
         <artifactId>aem-sdk-api</artifactId>
         <!-- update-aem-deps:from-aem-sdk-api -->
-        <version>2024.4.15860.20240410T113939Z-240300</version>
+        <version>2024.4.15939.20240417T061314Z-240300</version>
       </dependency>
 
       <!-- OSGI (individual artifacts) -->
@@ -313,13 +313,13 @@
       <dependency>
         <groupId>com.adobe.cq</groupId>
         <artifactId>core.wcm.components.core</artifactId>
-        <version>2.24.4</version>
+        <version>2.24.6</version>
       </dependency>
       <dependency>
         <groupId>com.adobe.cq</groupId>
         <artifactId>core.wcm.components.testing.aem-mock-plugin</artifactId>
         <!-- update-aem-deps:bundle=com.adobe.cq.core.wcm.components.core -->
-        <version>2.24.4</version>
+        <version>2.24.6</version>
       </dependency>
       <dependency>
         <groupId>org.slf4j</groupId>
@@ -330,7 +330,7 @@
         <groupId>commons-io</groupId>
         <artifactId>commons-io</artifactId>
         <!-- update-aem-deps:bundle=org.apache.commons.commons-io -->
-        <version>2.13.0</version>
+        <version>2.15.1</version>
       </dependency>
       <dependency>
         <groupId>org.apache.cocoon</groupId>
@@ -393,7 +393,7 @@
         <groupId>org.apache.commons</groupId>
         <artifactId>commons-lang3</artifactId>
         <!-- update-aem-deps:bundle=org.apache.commons.lang3 -->
-        <version>3.13.0</version>
+        <version>3.14.0</version>
       </dependency>
       <dependency>
         <groupId>commons-lang</groupId>
@@ -493,7 +493,7 @@
       <dependency>
         <groupId>org.apache.sling</groupId>
         <artifactId>org.apache.sling.resourceresolver</artifactId>
-        <version>1.11.4</version>
+        <version>1.11.6</version>
       </dependency>
       <dependency>
         <groupId>org.apache.sling</groupId>
@@ -536,7 +536,7 @@
       <dependency>
         <groupId>org.apache.sling</groupId>
         <artifactId>org.apache.sling.commons.json</artifactId>
-        <version>2.0.20</version>
+        <version>2.0.26</version>
       </dependency>
       <dependency>
         <groupId>org.apache.sling</groupId>
@@ -656,6 +656,7 @@
       <dependency>
         <groupId>org.apache.jackrabbit.vault</groupId>
         <artifactId>org.apache.jackrabbit.vault</artifactId>
+        <!-- update-aem-deps:derived-from=org.apache.jackrabbit.vault:3.7.3-T20240308111857-81fa88f1 -->
         <version>3.7.2</version>
       </dependency>
       <dependency>
