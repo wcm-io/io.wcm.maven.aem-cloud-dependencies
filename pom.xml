@@ -21,7 +21,7 @@
 
   <groupId>io.wcm.maven</groupId>
   <artifactId>io.wcm.maven.aem-cloud-dependencies</artifactId>
-  <version>2024.4.15860.20240410T113939Z-240300.0000</version>
+  <version>2024.4.15860.20240410T113939Z-240300.0001</version>
   <packaging>pom</packaging>
 
   <name>AEM Cloud Service Dependencies</name>
@@ -523,21 +523,15 @@
       <dependency>
         <groupId>org.apache.johnzon</groupId>
         <artifactId>johnzon-core</artifactId>
-        <!-- update-aem-deps:derived-from=org.apache.sling.commons.johnzon:2.0.0 -->
-        <version>2.0.0</version>
+        <!-- Stick with Johnzon 1.x as long as other modules (esp. Adobe Core Components) still depend on javax.json -->
+        <!-- update-aem-deps:derived-from=com.adobe.granite.commons.johnzon:1.2.16 -->
+        <version>1.2.21</version>
       </dependency>
       <dependency>
-        <groupId>jakarta.json</groupId>
-        <artifactId>jakarta.json-api</artifactId>
-        <!-- update-aem-deps:derived-from=org.apache.sling.commons.johnzon:2.0.0 -->
-        <version>2.1.1</version>
-      </dependency>
-      <!-- Update to latest Sling JSON Content Parser 2.x for unit tests for compatibility with Johnzon 2.0 (switch from javax.json to jakarta.json) -->
-      <dependency>
-        <groupId>org.apache.sling</groupId>
-        <artifactId>org.apache.sling.contentparser.json</artifactId>
-        <!-- update-aem-deps:ignore -->
-        <version>2.1.0</version>
+        <groupId>org.apache.geronimo.specs</groupId>
+        <artifactId>geronimo-json_1.1_spec</artifactId>
+        <!-- update-aem-deps:derived-from=com.adobe.granite.commons.johnzon:1.2.16 -->
+        <version>1.3</version>
       </dependency>
       <dependency>
         <groupId>org.apache.sling</groupId>
