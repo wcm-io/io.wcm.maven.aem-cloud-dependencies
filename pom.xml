@@ -529,15 +529,21 @@
       <dependency>
         <groupId>org.apache.johnzon</groupId>
         <artifactId>johnzon-core</artifactId>
-        <!-- Stick with Johnzon 1.x as long as other modules (esp. Adobe Core Components) still depend on javax.json -->
-        <!-- update-aem-deps:derived-from=com.adobe.granite.commons.johnzon:1.2.16 -->
-        <version>1.2.21</version>
+        <!-- update-aem-deps:derived-from=org.apache.sling.commons.johnzon:2.0.0 -->
+        <version>2.0.0</version>
       </dependency>
       <dependency>
-        <groupId>org.apache.geronimo.specs</groupId>
-        <artifactId>geronimo-json_1.1_spec</artifactId>
-        <!-- update-aem-deps:derived-from=com.adobe.granite.commons.johnzon:1.2.16 -->
-        <version>1.3</version>
+        <groupId>jakarta.json</groupId>
+        <artifactId>jakarta.json-api</artifactId>
+        <!-- update-aem-deps:derived-from=org.apache.sling.commons.johnzon:2.0.0 -->
+        <version>2.1.1</version>
+      </dependency>
+      <!-- Update to latest Sling JSON Content Parser 2.x for unit tests for compatibility with Johnzon 2.0 (switch from javax.json to jakarta.json) -->
+      <dependency>
+        <groupId>org.apache.sling</groupId>
+        <artifactId>org.apache.sling.contentparser.json</artifactId>
+        <!-- update-aem-deps:ignore -->
+        <version>2.1.0</version>
       </dependency>
       <dependency>
         <groupId>org.apache.sling</groupId>
