@@ -21,7 +21,7 @@
 
   <groupId>io.wcm.maven</groupId>
   <artifactId>io.wcm.maven.aem-cloud-dependencies</artifactId>
-  <version>2024.6.16971.20240628T122619Z-240600.0000</version>
+  <version>2024.7.17098.20240711T134106Z-240600.0000</version>
   <packaging>pom</packaging>
 
   <name>AEM Cloud Service Dependencies</name>
@@ -67,7 +67,7 @@
     <!-- update-aem-deps:bundle=slf4j.api -->
     <slf4j.version>1.7.32</slf4j.version>
     <!-- update-aem-deps:bundle=org.apache.jackrabbit.jackrabbit-jcr-commons -->
-    <jackrabbit.version>2.20.16</jackrabbit.version>
+    <jackrabbit.version>2.22.0</jackrabbit.version>
     <!-- update-aem-deps:derived-from=org.apache.jackrabbit.oak-core -->
     <oak.version>1.62.0</oak.version>
 
@@ -86,7 +86,7 @@
         <groupId>com.adobe.aem</groupId>
         <artifactId>aem-sdk-api</artifactId>
         <!-- update-aem-deps:from-aem-sdk-api -->
-        <version>2024.6.16971.20240628T122619Z-240600</version>
+        <version>2024.7.17098.20240711T134106Z-240600</version>
       </dependency>
 
       <!-- OSGI (individual artifacts) -->
@@ -136,7 +136,7 @@
         <groupId>org.osgi</groupId>
         <artifactId>org.osgi.service.http.whiteboard</artifactId>
         <!-- update-aem-deps:bundle-package=org.apache.felix.http.jetty:org.osgi.service.http.whiteboard -->
-        <version>1.1.0</version>
+        <version>1.1.1</version>
       </dependency>
       <dependency>
         <groupId>org.osgi</groupId>
@@ -336,7 +336,7 @@
         <groupId>commons-io</groupId>
         <artifactId>commons-io</artifactId>
         <!-- update-aem-deps:bundle=org.apache.commons.commons-io -->
-        <version>2.15.1</version>
+        <version>2.16.1</version>
       </dependency>
       <dependency>
         <groupId>org.apache.cocoon</groupId>
@@ -422,7 +422,7 @@
         <groupId>commons-codec</groupId>
         <artifactId>commons-codec</artifactId>
         <!-- update-aem-deps:bundle=org.apache.commons.commons-codec -->
-        <version>1.16.0</version>
+        <version>1.17.0</version>
       </dependency>
       <dependency>
         <groupId>org.apache.commons</groupId>
@@ -450,17 +450,17 @@
       <dependency>
         <groupId>com.fasterxml.jackson.core</groupId>
         <artifactId>jackson-core</artifactId>
-        <version>2.16.1</version>
+        <version>2.17.1</version>
       </dependency>
       <dependency>
         <groupId>com.fasterxml.jackson.core</groupId>
         <artifactId>jackson-annotations</artifactId>
-        <version>2.16.1</version>
+        <version>2.17.1</version>
       </dependency>
       <dependency>
         <groupId>com.fasterxml.jackson.core</groupId>
         <artifactId>jackson-databind</artifactId>
-        <version>2.16.1</version>
+        <version>2.17.1</version>
       </dependency>
       <dependency>
         <groupId>org.apache.geronimo.specs</groupId>
@@ -529,15 +529,21 @@
       <dependency>
         <groupId>org.apache.johnzon</groupId>
         <artifactId>johnzon-core</artifactId>
-        <!-- Stick with Johnzon 1.x as long as other modules (esp. Adobe Core Components) still depend on javax.json -->
-        <!-- update-aem-deps:derived-from=com.adobe.granite.commons.johnzon:1.2.16 -->
-        <version>1.2.21</version>
+        <!-- update-aem-deps:derived-from=org.apache.sling.commons.johnzon:2.0.0 -->
+        <version>2.0.0</version>
       </dependency>
       <dependency>
-        <groupId>org.apache.geronimo.specs</groupId>
-        <artifactId>geronimo-json_1.1_spec</artifactId>
-        <!-- update-aem-deps:derived-from=com.adobe.granite.commons.johnzon:1.2.16 -->
-        <version>1.3</version>
+        <groupId>jakarta.json</groupId>
+        <artifactId>jakarta.json-api</artifactId>
+        <!-- update-aem-deps:derived-from=org.apache.sling.commons.johnzon:2.0.0 -->
+        <version>2.1.1</version>
+      </dependency>
+      <!-- Update to latest Sling JSON Content Parser 2.x for unit tests for compatibility with Johnzon 2.0 (switch from javax.json to jakarta.json) -->
+      <dependency>
+        <groupId>org.apache.sling</groupId>
+        <artifactId>org.apache.sling.contentparser.json</artifactId>
+        <!-- update-aem-deps:ignore -->
+        <version>2.1.0</version>
       </dependency>
       <dependency>
         <groupId>org.apache.sling</groupId>
@@ -577,7 +583,7 @@
       <dependency>
         <groupId>org.apache.sling</groupId>
         <artifactId>org.apache.sling.scripting.sightly</artifactId>
-        <version>1.4.22-1.4.0</version>
+        <version>1.4.24-1.4.0</version>
       </dependency>
       <dependency>
         <groupId>org.apache.sling</groupId>
@@ -612,6 +618,7 @@
       <dependency>
         <groupId>org.apache.sling</groupId>
         <artifactId>org.apache.sling.models.impl</artifactId>
+        <!-- update-aem-deps:derived-from=org.apache.sling.models.impl:1.6.5-B0001 -->
         <version>1.6.4</version>
       </dependency>
       <dependency>
@@ -662,7 +669,7 @@
       <dependency>
         <groupId>org.apache.jackrabbit.vault</groupId>
         <artifactId>org.apache.jackrabbit.vault</artifactId>
-        <!-- update-aem-deps:derived-from=org.apache.jackrabbit.vault:3.7.3-T20240514105118-694f6aea -->
+        <!-- update-aem-deps:derived-from=org.apache.jackrabbit.vault:3.7.3-T20240702132512-ac15993d -->
         <version>3.7.2</version>
       </dependency>
       <dependency>
@@ -723,7 +730,7 @@
             <configuration>
               <rules>
                 <requireMavenVersion>
-                  <version>[3.3.9,)</version>
+                  <version>[3.8.6,)</version>
                 </requireMavenVersion>
               </rules>
             </configuration>
@@ -736,37 +743,37 @@
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-clean-plugin</artifactId>
-          <version>3.3.1</version>
+          <version>3.4.0</version>
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-install-plugin</artifactId>
-          <version>3.1.1</version>
+          <version>3.1.2</version>
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-source-plugin</artifactId>
-          <version>3.3.0</version>
+          <version>3.3.1</version>
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-gpg-plugin</artifactId>
-          <version>3.1.0</version>
+          <version>3.2.4</version>
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-deploy-plugin</artifactId>
-          <version>3.1.1</version>
+          <version>3.1.2</version>
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-javadoc-plugin</artifactId>
-          <version>3.5.0</version>
+          <version>3.7.0</version>
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-release-plugin</artifactId>
-          <version>3.0.1</version>
+          <version>3.1.0</version>
           <configuration>
             <autoVersionSubmodules>true</autoVersionSubmodules>
             <goals>deploy</goals>
@@ -776,7 +783,7 @@
             <dependency>
               <groupId>org.apache.maven.scm</groupId>
               <artifactId>maven-scm-provider-gitexe</artifactId>
-              <version>2.0.0-M3</version>
+              <version>2.1.0</version>
             </dependency>
             <dependency>
               <groupId>io.wcm.maven.release-policies</groupId>
@@ -793,17 +800,17 @@
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-enforcer-plugin</artifactId>
-          <version>3.4.1</version>
+          <version>3.5.0</version>
         </plugin>
         <plugin>
           <groupId>org.sonatype.plugins</groupId>
           <artifactId>nexus-staging-maven-plugin</artifactId>
-          <version>1.6.13</version>
+          <version>1.7.0</version>
         </plugin>
         <plugin>
           <groupId>com.amashchenko.maven.plugin</groupId>
           <artifactId>gitflow-maven-plugin</artifactId>
-          <version>1.20.0</version>
+          <version>1.21.0</version>
           <inherited>false</inherited>
           <configuration>
             <skipTestProject>true</skipTestProject>
@@ -888,7 +895,7 @@
           <plugin>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-invoker-plugin</artifactId>
-            <version>3.6.0</version>
+            <version>3.7.0</version>
             <configuration>
               <projectsDirectory>src/it</projectsDirectory>
               <cloneProjectsTo>${project.build.directory}/it</cloneProjectsTo>
