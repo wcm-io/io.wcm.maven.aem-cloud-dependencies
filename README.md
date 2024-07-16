@@ -30,7 +30,7 @@ To import the dependencies in your AEM project use:
 </dependency>
 ```
 
-*Please note*: Since version `2024.6.16971.20240628T122619Z-240600.0001` JSONP 2.1 and Johnzon 2.x is used by default by this POM. If your code, or dependencies of your project, still rely on JSONP 1.1 and Johnzon 1.2.x, you can use the [Mixin for JSONP 1.1](https://github.com/wcm-io/io.wcm.maven.aem-cloud-dependencies-mixin-jsonp11).
+*Please note*: Since version `2024.7.17098.20240711T134106Z-240600.0000` JSONP 2.1 and Johnzon 2.x is used by default by this POM. If your code, or dependencies of your project, still rely on JSONP 1.1 and Johnzon 1.2.x, you can use the [Mixin for JSONP 1.1](https://github.com/wcm-io/io.wcm.maven.aem-cloud-dependencies-mixin-jsonp11).
 
 
 
