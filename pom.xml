@@ -21,7 +21,7 @@
 
   <groupId>io.wcm.maven</groupId>
   <artifactId>io.wcm.maven.aem-cloud-dependencies</artifactId>
-  <version>2024.8.17465.20240813T175259Z-240700.0000</version>
+  <version>2024.8.17569.20240822T203847Z-240700.0000</version>
   <packaging>pom</packaging>
 
   <name>AEM Cloud Service Dependencies</name>
@@ -86,7 +86,7 @@
         <groupId>com.adobe.aem</groupId>
         <artifactId>aem-sdk-api</artifactId>
         <!-- update-aem-deps:from-aem-sdk-api -->
-        <version>2024.8.17465.20240813T175259Z-240700</version>
+        <version>2024.8.17569.20240822T203847Z-240700</version>
       </dependency>
 
       <!-- OSGI (individual artifacts) -->
@@ -410,7 +410,7 @@
       <dependency>
         <groupId>commons-collections</groupId>
         <artifactId>commons-collections</artifactId>
-        <!-- update-aem-deps:bundle=org.apache.commons.collections -->
+        <!-- update-aem-deps:derived-from=org.apache.commons.collections:3.2.2-adobe-2 -->
         <version>3.2.2</version>
       </dependency>
       <dependency>
@@ -445,7 +445,7 @@
         <groupId>com.google.code.gson</groupId>
         <artifactId>gson</artifactId>
         <!-- update-aem-deps:bundle=com.google.gson -->
-        <version>2.8.9</version>
+        <version>2.9.0</version>
       </dependency>
       <dependency>
         <groupId>com.fasterxml.jackson.core</groupId>
@@ -470,7 +470,7 @@
       <dependency>
         <groupId>com.github.jknack</groupId>
         <artifactId>handlebars</artifactId>
-        <version>4.3.0</version>
+        <version>4.3.1</version>
       </dependency>
       <dependency>
         <groupId>taglibs</groupId>
@@ -489,7 +489,7 @@
       <dependency>
         <groupId>org.apache.sling</groupId>
         <artifactId>org.apache.sling.api</artifactId>
-        <version>2.27.2</version>
+        <version>2.27.6</version>
       </dependency>
       <dependency>
         <groupId>org.apache.sling</groupId>
@@ -499,7 +499,8 @@
       <dependency>
         <groupId>org.apache.sling</groupId>
         <artifactId>org.apache.sling.resourceresolver</artifactId>
-        <version>1.11.6</version>
+        <!-- update-aem-deps:derived-from=org.apache.sling.resourceresolver:1.12.0-T20240723153354-a0270a0 -->
+        <version>1.12.0</version>
       </dependency>
       <dependency>
         <groupId>org.apache.sling</groupId>
@@ -669,8 +670,7 @@
       <dependency>
         <groupId>org.apache.jackrabbit.vault</groupId>
         <artifactId>org.apache.jackrabbit.vault</artifactId>
-        <!-- update-aem-deps:derived-from=org.apache.jackrabbit.vault:3.7.3-T20240702132512-ac15993d -->
-        <version>3.7.2</version>
+        <version>3.8.0</version>
       </dependency>
       <dependency>
         <groupId>org.slf4j</groupId>
