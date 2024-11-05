@@ -98,9 +98,21 @@
       </dependency>
       <dependency>
         <groupId>org.osgi</groupId>
+        <artifactId>org.osgi.dto</artifactId>
+        <!-- update-aem-deps:bundle-package=org.apache.felix.framework:org.osgi.dto -->
+        <version>1.1.1</version>
+      </dependency>
+      <dependency>
+        <groupId>org.osgi</groupId>
         <artifactId>org.osgi.resource</artifactId>
         <!-- update-aem-deps:bundle-package=org.apache.felix.framework:org.osgi.resource -->
         <version>1.0.1</version>
+      </dependency>
+      <dependency>
+        <groupId>org.osgi</groupId>
+        <artifactId>org.osgi.service.cm</artifactId>
+        <!-- update-aem-deps:bundle-package=org.apache.felix.configadmin:org.osgi.service.cm -->
+        <version>1.6.0</version>
       </dependency>
       <dependency>
         <groupId>org.osgi</groupId>
@@ -110,15 +122,9 @@
       </dependency>
       <dependency>
         <groupId>org.osgi</groupId>
-        <artifactId>org.osgi.service.metatype</artifactId>
-        <!-- update-aem-deps:bundle-package=org.apache.felix.metatype:org.osgi.service.metatype -->
-        <version>1.4.0</version>
-      </dependency>
-      <dependency>
-        <groupId>org.osgi</groupId>
-        <artifactId>org.osgi.service.cm</artifactId>
-        <!-- update-aem-deps:bundle-package=org.apache.felix.configadmin:org.osgi.service.cm -->
-        <version>1.6.0</version>
+        <artifactId>org.osgi.service.condition</artifactId>
+        <!-- update-aem-deps:bundle-package=org.apache.felix.framework:org.osgi.service.condition -->
+        <version>1.0.0</version>
       </dependency>
       <dependency>
         <groupId>org.osgi</groupId>
@@ -146,6 +152,18 @@
       </dependency>
       <dependency>
         <groupId>org.osgi</groupId>
+        <artifactId>org.osgi.service.metatype</artifactId>
+        <!-- update-aem-deps:bundle-package=org.apache.felix.metatype:org.osgi.service.metatype -->
+        <version>1.4.0</version>
+      </dependency>
+      <dependency>
+        <groupId>org.osgi</groupId>
+        <artifactId>org.osgi.service.url</artifactId>
+        <!-- update-aem-deps:bundle-package=org.apache.felix.framework:org.osgi.service.url -->
+        <version>1.0.1</version>
+      </dependency>
+      <dependency>
+        <groupId>org.osgi</groupId>
         <artifactId>org.osgi.util.converter</artifactId>
         <!-- update-aem-deps:derived-from=org.osgi.util.converter:1.0.9.202202082230 -->
         <version>1.0.9</version>
@@ -167,24 +185,6 @@
         <artifactId>org.osgi.util.tracker</artifactId>
         <!-- update-aem-deps:bundle-package=org.apache.felix.framework:org.osgi.util.tracker -->
         <version>1.5.3</version>
-      </dependency>
-      <dependency>
-        <groupId>org.osgi</groupId>
-        <artifactId>org.osgi.dto</artifactId>
-        <!-- update-aem-deps:bundle-package=org.apache.felix.framework:org.osgi.dto -->
-        <version>1.1.1</version>
-      </dependency>
-      <dependency>
-        <groupId>org.osgi</groupId>
-        <artifactId>org.osgi.service.url</artifactId>
-        <!-- update-aem-deps:bundle-package=org.apache.felix.framework:org.osgi.service.url -->
-        <version>1.0.1</version>
-      </dependency>
-      <dependency>
-        <groupId>org.osgi</groupId>
-        <artifactId>org.osgi.service.condition</artifactId>
-        <!-- update-aem-deps:bundle-package=org.apache.felix.framework:org.osgi.service.condition -->
-        <version>1.0.0</version>
       </dependency>
 
       <!-- OSGi annotations -->
