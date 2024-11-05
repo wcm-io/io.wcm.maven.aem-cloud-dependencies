@@ -177,7 +177,7 @@
       <dependency>
         <groupId>org.osgi</groupId>
         <artifactId>org.osgi.util.promise</artifactId>
-        <!-- update-aem-deps:derived-from=org.osgi.util.function:1.2.0.202109301733 -->
+        <!-- update-aem-deps:derived-from=org.osgi.util.promise:1.2.0.202109301733 -->
         <version>1.2.0</version>
       </dependency>
       <dependency>
