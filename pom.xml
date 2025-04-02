@@ -21,7 +21,7 @@
 
   <groupId>io.wcm.maven</groupId>
   <artifactId>io.wcm.maven.aem-cloud-dependencies</artifactId>
-  <version>2025.3.19823.20250304T101418Z-250200.0001-SNAPSHOT</version>
+  <version>2025.3.20133.20250325T063357Z-250300.0000-SNAPSHOT</version>
   <packaging>pom</packaging>
 
   <name>AEM Cloud Service Dependencies</name>
@@ -86,7 +86,7 @@
         <groupId>com.adobe.aem</groupId>
         <artifactId>aem-sdk-api</artifactId>
         <!-- update-aem-deps:from-aem-sdk-api -->
-        <version>2025.3.19823.20250304T101418Z-250200</version>
+        <version>2025.3.20133.20250325T063357Z-250300</version>
       </dependency>
 
       <!-- OSGI (individual artifacts) -->
@@ -325,13 +325,13 @@
       <dependency>
         <groupId>com.adobe.cq</groupId>
         <artifactId>core.wcm.components.core</artifactId>
-        <version>2.27.0</version>
+        <version>2.28.0</version>
       </dependency>
       <dependency>
         <groupId>com.adobe.cq</groupId>
         <artifactId>core.wcm.components.testing.aem-mock-plugin</artifactId>
         <!-- update-aem-deps:bundle=com.adobe.cq.core.wcm.components.core -->
-        <version>2.27.0</version>
+        <version>2.28.0</version>
       </dependency>
       <dependency>
         <groupId>org.slf4j</groupId>
