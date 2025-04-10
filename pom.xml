@@ -307,7 +307,7 @@
         <groupId>org.apache.poi</groupId>
         <artifactId>poi-ooxml</artifactId>
         <!-- update-aem-deps:derived-from=com.adobe.granite.poi:2.1.0 -->
-        <version>5.2.3</version>
+        <version>5.4.0</version>
       </dependency>
       <dependency>
         <groupId>com.adobe.granite</groupId>
