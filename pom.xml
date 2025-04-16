@@ -21,7 +21,7 @@
 
   <groupId>io.wcm.maven</groupId>
   <artifactId>io.wcm.maven.aem-cloud-dependencies</artifactId>
-  <version>2025.3.20133.20250325T063357Z-250300.0001-SNAPSHOT</version>
+  <version>2025.4.20476.20250414T214138Z-250300.0000-SNAPSHOT</version>
   <packaging>pom</packaging>
 
   <name>AEM Cloud Service Dependencies</name>
@@ -86,7 +86,7 @@
         <groupId>com.adobe.aem</groupId>
         <artifactId>aem-sdk-api</artifactId>
         <!-- update-aem-deps:from-aem-sdk-api -->
-        <version>2025.3.20133.20250325T063357Z-250300</version>
+        <version>2025.4.20476.20250414T214138Z-250300</version>
       </dependency>
 
       <!-- OSGI (individual artifacts) -->
@@ -510,7 +510,7 @@
       <dependency>
         <groupId>org.apache.sling</groupId>
         <artifactId>org.apache.sling.resourceresolver</artifactId>
-        <version>1.12.4</version>
+        <version>1.12.6</version>
       </dependency>
       <dependency>
         <groupId>org.apache.sling</groupId>
@@ -644,7 +644,7 @@
       <dependency>
         <groupId>org.apache.sling</groupId>
         <artifactId>org.apache.sling.caconfig.impl</artifactId>
-        <version>1.6.0</version>
+        <version>1.7.2</version>
       </dependency>
       <dependency>
         <groupId>org.apache.sling</groupId>
@@ -679,7 +679,7 @@
       <dependency>
         <groupId>org.apache.jackrabbit.vault</groupId>
         <artifactId>org.apache.jackrabbit.vault</artifactId>
-        <version>3.8.2</version>
+        <version>3.8.4</version>
       </dependency>
       <dependency>
         <groupId>org.slf4j</groupId>
