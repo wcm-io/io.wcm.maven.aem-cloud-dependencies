@@ -21,7 +21,7 @@
 
   <groupId>io.wcm.maven</groupId>
   <artifactId>io.wcm.maven.aem-cloud-dependencies</artifactId>
-  <version>2025.3.20133.20250325T063357Z-250300.0000</version>
+  <version>2025.4.20476.20250414T214138Z-250300.0000</version>
   <packaging>pom</packaging>
 
   <name>AEM Cloud Service Dependencies</name>
@@ -72,10 +72,10 @@
     <oak.version>1.62.0</oak.version>
 
     <!-- repository settings -->
-    <distribution.snapshotRepositoryId>ossrh</distribution.snapshotRepositoryId>
-    <distribution.snapshotRepositoryUrl>https://oss.sonatype.org/content/repositories/snapshots</distribution.snapshotRepositoryUrl>
-    <distribution.releaseRepositoryId>ossrh</distribution.releaseRepositoryId>
-    <distribution.releaseRepositoryUrl>https://oss.sonatype.org/service/local/staging/deploy/maven2/</distribution.releaseRepositoryUrl>
+    <distribution.snapshotRepositoryId>sonatype-central-snapshots</distribution.snapshotRepositoryId>
+    <distribution.snapshotRepositoryUrl>https://central.sonatype.com/repository/maven-snapshots</distribution.snapshotRepositoryUrl>
+    <distribution.releaseRepositoryId>sonatype-central</distribution.releaseRepositoryId>
+    <distribution.releaseRepositoryUrl>https://central.sonatype.com</distribution.releaseRepositoryUrl>
   </properties>
 
   <dependencyManagement>
@@ -86,7 +86,7 @@
         <groupId>com.adobe.aem</groupId>
         <artifactId>aem-sdk-api</artifactId>
         <!-- update-aem-deps:from-aem-sdk-api -->
-        <version>2025.3.20133.20250325T063357Z-250300</version>
+        <version>2025.4.20476.20250414T214138Z-250300</version>
       </dependency>
 
       <!-- OSGI (individual artifacts) -->
@@ -510,7 +510,7 @@
       <dependency>
         <groupId>org.apache.sling</groupId>
         <artifactId>org.apache.sling.resourceresolver</artifactId>
-        <version>1.12.4</version>
+        <version>1.12.6</version>
       </dependency>
       <dependency>
         <groupId>org.apache.sling</groupId>
@@ -644,7 +644,7 @@
       <dependency>
         <groupId>org.apache.sling</groupId>
         <artifactId>org.apache.sling.caconfig.impl</artifactId>
-        <version>1.6.0</version>
+        <version>1.7.2</version>
       </dependency>
       <dependency>
         <groupId>org.apache.sling</groupId>
@@ -679,7 +679,7 @@
       <dependency>
         <groupId>org.apache.jackrabbit.vault</groupId>
         <artifactId>org.apache.jackrabbit.vault</artifactId>
-        <version>3.8.2</version>
+        <version>3.8.4</version>
       </dependency>
       <dependency>
         <groupId>org.slf4j</groupId>
@@ -812,9 +812,9 @@
           <version>3.5.0</version>
         </plugin>
         <plugin>
-          <groupId>org.sonatype.plugins</groupId>
-          <artifactId>nexus-staging-maven-plugin</artifactId>
-          <version>1.7.0</version>
+          <groupId>org.sonatype.central</groupId>
+          <artifactId>central-publishing-maven-plugin</artifactId>
+          <version>0.7.0</version>
         </plugin>
         <plugin>
           <groupId>com.amashchenko.maven.plugin</groupId>
@@ -881,15 +881,12 @@
           </plugin>
           <!-- configure staging process at sonatype.-->
           <plugin>
-            <groupId>org.sonatype.plugins</groupId>
-            <artifactId>nexus-staging-maven-plugin</artifactId>
+            <groupId>org.sonatype.central</groupId>
+            <artifactId>central-publishing-maven-plugin</artifactId>
             <inherited>false</inherited>
             <extensions>true</extensions>
             <configuration>
-              <serverId>ossrh</serverId>
-              <nexusUrl>https://oss.sonatype.org/</nexusUrl>
-              <!-- Deployed artifacts should go to staging to be reviewed before publish -->
-              <autoReleaseAfterClose>false</autoReleaseAfterClose>
+              <publishingServerId>sonatype-central</publishingServerId>
             </configuration>
           </plugin>
         </plugins>
