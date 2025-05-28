@@ -21,7 +21,7 @@
 
   <groupId>io.wcm.maven</groupId>
   <artifactId>io.wcm.maven.aem-cloud-dependencies</artifactId>
-  <version>2025.5.20936.20250519T095350Z-250400.0000</version>
+  <version>2025.5.21005.20250522T173058Z-250400.0000</version>
   <packaging>pom</packaging>
 
   <name>AEM Cloud Service Dependencies</name>
@@ -86,7 +86,7 @@
         <groupId>com.adobe.aem</groupId>
         <artifactId>aem-sdk-api</artifactId>
         <!-- update-aem-deps:from-aem-sdk-api -->
-        <version>2025.5.20936.20250519T095350Z-250400</version>
+        <version>2025.5.21005.20250522T173058Z-250400</version>
       </dependency>
 
       <!-- OSGI (individual artifacts) -->
@@ -422,7 +422,7 @@
       <dependency>
         <groupId>org.apache.commons</groupId>
         <artifactId>commons-collections4</artifactId>
-        <version>4.5.0-M3</version>
+        <version>4.5.0</version>
       </dependency>
       <dependency>
         <groupId>commons-codec</groupId>
@@ -510,7 +510,7 @@
       <dependency>
         <groupId>org.apache.sling</groupId>
         <artifactId>org.apache.sling.resourceresolver</artifactId>
-        <version>1.12.6</version>
+        <version>1.12.8</version>
       </dependency>
       <dependency>
         <groupId>org.apache.sling</groupId>
