@@ -21,7 +21,7 @@
 
   <groupId>io.wcm.maven</groupId>
   <artifactId>io.wcm.maven.aem-cloud-dependencies</artifactId>
-  <version>2025.6.21193.20250609T124356Z-250500.0000</version>
+  <version>2025.6.21331.20250619T192625Z-250500.0000</version>
   <packaging>pom</packaging>
 
   <name>AEM Cloud Service Dependencies</name>
@@ -86,7 +86,7 @@
         <groupId>com.adobe.aem</groupId>
         <artifactId>aem-sdk-api</artifactId>
         <!-- update-aem-deps:from-aem-sdk-api -->
-        <version>2025.6.21193.20250609T124356Z-250500</version>
+        <version>2025.6.21331.20250619T192625Z-250500</version>
       </dependency>
 
       <!-- OSGI (individual artifacts) -->
@@ -509,6 +509,22 @@
       </dependency>
       <dependency>
         <groupId>org.apache.sling</groupId>
+        <artifactId>org.apache.sling.commons.scheduler</artifactId>
+        <version>2.7.12</version>
+      </dependency>
+      <dependency>
+        <groupId>org.apache.sling</groupId>
+        <artifactId>org.apache.sling.event</artifactId>
+        <version>4.3.16</version>
+      </dependency>
+      <dependency>
+        <groupId>org.apache.sling</groupId>
+        <artifactId>org.apache.sling.event.api</artifactId>
+        <!-- update-aem-deps:derived-from=org.apache.sling.event:4.3.16 -->
+        <version>1.0.4</version>
+      </dependency>
+      <dependency>
+        <groupId>org.apache.sling</groupId>
         <artifactId>org.apache.sling.resourceresolver</artifactId>
         <version>1.12.8</version>
       </dependency>
@@ -660,6 +676,16 @@
         <groupId>org.apache.sling</groupId>
         <artifactId>org.apache.sling.commons.threads</artifactId>
         <version>3.3.0</version>
+      </dependency>
+      <dependency>
+        <groupId>org.apache.sling</groupId>
+        <artifactId>org.apache.sling.hc.api</artifactId>
+        <version>1.0.4</version>
+      </dependency>
+      <dependency>
+        <groupId>org.apache.felix</groupId>
+        <artifactId>org.apache.felix.healthcheck.api</artifactId>
+        <version>2.0.4</version>
       </dependency>
       <dependency>
         <groupId>org.apache.jackrabbit</groupId>
