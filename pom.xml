@@ -405,7 +405,7 @@
         <groupId>org.apache.commons</groupId>
         <artifactId>commons-lang3</artifactId>
         <!-- update-aem-deps:bundle=org.apache.commons.lang3 -->
-        <version>3.17.0</version>
+        <version>3.18.0</version>
       </dependency>
       <dependency>
         <groupId>commons-lang</groupId>
