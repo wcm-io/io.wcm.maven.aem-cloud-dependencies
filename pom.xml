@@ -21,7 +21,7 @@
 
   <groupId>io.wcm.maven</groupId>
   <artifactId>io.wcm.maven.aem-cloud-dependencies</artifactId>
-  <version>2025.6.21331.20250619T192625Z-250500.0001-SNAPSHOT</version>
+  <version>2025.7.21644.20250718T154700Z-250600.0000-SNAPSHOT</version>
   <packaging>pom</packaging>
 
   <name>AEM Cloud Service Dependencies</name>
@@ -67,7 +67,7 @@
     <!-- update-aem-deps:bundle=slf4j.api -->
     <slf4j.version>1.7.36</slf4j.version>
     <!-- update-aem-deps:bundle=org.apache.jackrabbit.jackrabbit-jcr-commons -->
-    <jackrabbit.version>2.22.0</jackrabbit.version>
+    <jackrabbit.version>2.22.1</jackrabbit.version>
     <!-- update-aem-deps:derived-from=org.apache.jackrabbit.oak-core -->
     <oak.version>1.62.0</oak.version>
 
@@ -86,7 +86,7 @@
         <groupId>com.adobe.aem</groupId>
         <artifactId>aem-sdk-api</artifactId>
         <!-- update-aem-deps:from-aem-sdk-api -->
-        <version>2025.6.21331.20250619T192625Z-250500</version>
+        <version>2025.7.21644.20250718T154700Z-250600</version>
       </dependency>
 
       <!-- OSGI (individual artifacts) -->
@@ -399,7 +399,7 @@
         <groupId>commons-fileupload</groupId>
         <artifactId>commons-fileupload</artifactId>
         <!-- update-aem-deps:bundle=org.apache.commons.commons-fileupload -->
-        <version>1.5</version>
+        <version>1.6.0</version>
       </dependency>
       <dependency>
         <groupId>org.apache.commons</groupId>
@@ -428,7 +428,7 @@
         <groupId>commons-codec</groupId>
         <artifactId>commons-codec</artifactId>
         <!-- update-aem-deps:bundle=org.apache.commons.commons-codec -->
-        <version>1.17.0</version>
+        <version>1.18.0</version>
       </dependency>
       <dependency>
         <groupId>org.apache.commons</groupId>
@@ -515,18 +515,18 @@
       <dependency>
         <groupId>org.apache.sling</groupId>
         <artifactId>org.apache.sling.event</artifactId>
-        <version>4.3.16</version>
+        <version>4.3.18</version>
       </dependency>
       <dependency>
         <groupId>org.apache.sling</groupId>
         <artifactId>org.apache.sling.event.api</artifactId>
-        <!-- update-aem-deps:derived-from=org.apache.sling.event:4.3.16 -->
+        <!-- update-aem-deps:derived-from=org.apache.sling.event:4.3.18 -->
         <version>1.0.4</version>
       </dependency>
       <dependency>
         <groupId>org.apache.sling</groupId>
         <artifactId>org.apache.sling.resourceresolver</artifactId>
-        <version>1.12.8</version>
+        <version>1.12.10</version>
       </dependency>
       <dependency>
         <groupId>org.apache.sling</groupId>
