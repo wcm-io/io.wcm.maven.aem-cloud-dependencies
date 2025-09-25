@@ -260,6 +260,12 @@
         <version>3.1.0</version>
       </dependency>
       <dependency>
+        <groupId>jakarta.servlet</groupId>
+        <artifactId>jakarta.servlet-api</artifactId>
+        <!-- update-aem-deps:bundle-package=org.apache.felix.http.servlet-api:jakarta.servlet -->
+        <version>5.0.0</version>
+      </dependency>
+      <dependency>
         <groupId>javax.servlet.jsp</groupId>
         <artifactId>jsp-api</artifactId>
         <!-- update-aem-deps:ignore -->
