@@ -21,7 +21,7 @@
 
   <groupId>io.wcm.maven</groupId>
   <artifactId>io.wcm.maven.aem-cloud-dependencies</artifactId>
-  <version>2025.9.22450.20250911T131210Z-250800.0001-SNAPSHOT</version>
+  <version>2025.9.22758.20250928T092442Z-250900.0000-SNAPSHOT</version>
   <packaging>pom</packaging>
 
   <name>AEM Cloud Service Dependencies</name>
@@ -86,7 +86,7 @@
         <groupId>com.adobe.aem</groupId>
         <artifactId>aem-sdk-api</artifactId>
         <!-- update-aem-deps:from-aem-sdk-api -->
-        <version>2025.9.22450.20250911T131210Z-250800</version>
+        <version>2025.9.22758.20250928T092442Z-250900</version>
       </dependency>
 
       <!-- OSGI (individual artifacts) -->
@@ -148,7 +148,7 @@
         <groupId>org.osgi</groupId>
         <artifactId>org.osgi.service.log</artifactId>
         <!-- update-aem-deps:bundle-package=org.apache.felix.log:org.osgi.service.log -->
-        <version>1.4.0</version>
+        <version>1.5.0</version>
       </dependency>
       <dependency>
         <groupId>org.osgi</groupId>
@@ -344,13 +344,13 @@
       <dependency>
         <groupId>com.adobe.cq</groupId>
         <artifactId>core.wcm.components.core</artifactId>
-        <version>2.30.0</version>
+        <version>2.30.1</version>
       </dependency>
       <dependency>
         <groupId>com.adobe.cq</groupId>
         <artifactId>core.wcm.components.testing.aem-mock-plugin</artifactId>
         <!-- update-aem-deps:bundle=com.adobe.cq.core.wcm.components.core -->
-        <version>2.30.0</version>
+        <version>2.30.1</version>
       </dependency>
       <dependency>
         <groupId>org.slf4j</groupId>
@@ -371,8 +371,7 @@
       <dependency>
         <groupId>org.apache.commons</groupId>
         <artifactId>commons-email</artifactId>
-        <!-- update-aem-deps:bundle=org.apache.commons.email -->
-        <version>1.5</version>
+        <version>1.6.0</version>
       </dependency>
       <dependency>
         <groupId>org.apache.commons</groupId>
@@ -452,7 +451,7 @@
       <dependency>
         <groupId>org.apache.commons</groupId>
         <artifactId>commons-compress</artifactId>
-        <version>1.24.0</version>
+        <version>1.28.0</version>
       </dependency>
       <dependency>
         <groupId>org.apache.commons</groupId>
@@ -541,7 +540,7 @@
       <dependency>
         <groupId>org.apache.sling</groupId>
         <artifactId>org.apache.sling.commons.scheduler</artifactId>
-        <version>2.7.12</version>
+        <version>2.7.14</version>
       </dependency>
       <dependency>
         <groupId>org.apache.sling</groupId>
@@ -557,7 +556,7 @@
       <dependency>
         <groupId>org.apache.sling</groupId>
         <artifactId>org.apache.sling.resourceresolver</artifactId>
-        <version>1.12.10</version>
+        <version>1.12.12</version>
       </dependency>
       <dependency>
         <groupId>org.apache.sling</groupId>
@@ -567,7 +566,7 @@
       <dependency>
         <groupId>org.apache.sling</groupId>
         <artifactId>org.apache.sling.jcr.api</artifactId>
-        <version>2.4.0</version>
+        <version>2.4.2</version>
       </dependency>
       <dependency>
         <groupId>org.apache.sling</groupId>
@@ -577,7 +576,7 @@
       <dependency>
         <groupId>org.apache.sling</groupId>
         <artifactId>org.apache.sling.commons.mime</artifactId>
-        <version>2.2.4</version>
+        <version>2.3.0</version>
       </dependency>
       <dependency>
         <groupId>org.apache.sling</groupId>
