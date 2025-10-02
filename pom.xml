@@ -21,7 +21,7 @@
 
   <groupId>io.wcm.maven</groupId>
   <artifactId>io.wcm.maven.aem-cloud-dependencies</artifactId>
-  <version>2025.9.22758.20250928T092442Z-250900.0000</version>
+  <version>2025.9.22758.20250928T092442Z-250900.0001</version>
   <packaging>pom</packaging>
 
   <name>AEM Cloud Service Dependencies</name>
@@ -332,12 +332,6 @@
         <artifactId>org.apache.servicemix.bundles.jaxb-runtime</artifactId>
         <!-- update-aem-deps:derived-from=org.apache.servicemix.bundles.jaxb-runtime:2.3.2 -->
         <version>2.3.2_2</version>
-      </dependency>
-      <dependency>
-        <groupId>org.yaml</groupId>
-        <artifactId>snakeyaml</artifactId>
-        <!-- update-aem-deps:derived-from=org.yaml.snakeyaml:2.4.0 -->
-        <version>2.4</version>
       </dependency>
 
       <!-- Dependencies included in SDK API jar - but we keep them here for backward compatibility with older aem-dependencies versions -->
