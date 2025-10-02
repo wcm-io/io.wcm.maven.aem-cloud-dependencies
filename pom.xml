@@ -333,12 +333,6 @@
         <!-- update-aem-deps:derived-from=org.apache.servicemix.bundles.jaxb-runtime:2.3.2 -->
         <version>2.3.2_2</version>
       </dependency>
-      <dependency>
-        <groupId>org.yaml</groupId>
-        <artifactId>snakeyaml</artifactId>
-        <!-- update-aem-deps:derived-from=org.yaml.snakeyaml:2.4.0 -->
-        <version>2.4</version>
-      </dependency>
 
       <!-- Dependencies included in SDK API jar - but we keep them here for backward compatibility with older aem-dependencies versions -->
       <dependency>
