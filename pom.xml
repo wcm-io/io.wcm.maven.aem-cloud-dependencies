@@ -89,7 +89,7 @@
         <version>2026.1.23963.20260108T001551Z-251200</version>
       </dependency>
 
-      <!-- OSGI (individual artifacts) -->
+      <!-- OSGi (individual artifacts) -->
       <dependency>
         <groupId>org.osgi</groupId>
         <artifactId>org.osgi.framework</artifactId>
@@ -232,19 +232,20 @@
         <version>2.0.0</version>
       </dependency>
 
-      <!-- OSGI (aggregated artifacts - it is recommended to use the individual artifacts instead) -->
+      <!-- Outdated OSGi aggregated artifacts - replace usage of them with the individual artifacts listed above,
+           see https://github.com/wcm-io/io.wcm.maven.aem-cloud-dependencies/issues/105 -->
+      <!--
       <dependency>
         <groupId>org.osgi</groupId>
         <artifactId>osgi.core</artifactId>
-        <!-- update-aem-deps:from-aem-sdk-api -->
         <version>8.0.0</version>
       </dependency>
       <dependency>
         <groupId>org.osgi</groupId>
         <artifactId>osgi.cmpn</artifactId>
-        <!-- update-aem-deps:ignore -->
         <version>7.0.0</version>
       </dependency>
+      -->
 
       <!-- Standard APIs -->
       <dependency>
