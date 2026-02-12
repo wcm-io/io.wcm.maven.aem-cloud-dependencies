@@ -21,7 +21,7 @@
 
   <groupId>io.wcm.maven</groupId>
   <artifactId>io.wcm.maven.aem-cloud-dependencies</artifactId>
-  <version>2026.2.24288.20260204T121510Z-260100.0000</version>
+  <version>2026.2.24288.20260204T121510Z-260100.0001</version>
   <packaging>pom</packaging>
 
   <name>AEM Cloud Service Dependencies</name>
@@ -68,8 +68,8 @@
     <slf4j.version>1.7.36</slf4j.version>
     <!-- update-aem-deps:bundle=org.apache.jackrabbit.jackrabbit-jcr-commons -->
     <jackrabbit.version>2.22.3</jackrabbit.version>
-    <!-- update-aem-deps:derived-from=org.apache.jackrabbit.oak-core -->
-    <oak.version>1.62.0</oak.version>
+    <!-- update-aem-deps:bundle=org.apache.jackrabbit.oak-core -->
+    <oak.version>1.90.0</oak.version>
 
     <!-- repository settings -->
     <distribution.snapshotRepositoryId>sonatype-central-snapshots</distribution.snapshotRepositoryId>
