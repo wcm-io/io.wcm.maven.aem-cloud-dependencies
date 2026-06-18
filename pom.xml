@@ -21,7 +21,7 @@
 
   <groupId>io.wcm.maven</groupId>
   <artifactId>io.wcm.maven.aem-cloud-dependencies</artifactId>
-  <version>2026.5.26353.20260528T211800Z-260500.0000</version>
+  <version>2026.6.26635.20260611T122956Z-260500.0000</version>
   <packaging>pom</packaging>
 
   <name>AEM Cloud Service Dependencies</name>
@@ -68,8 +68,8 @@
     <slf4j.version>1.7.36</slf4j.version>
     <!-- update-aem-deps:bundle=org.apache.jackrabbit.jackrabbit-jcr-commons -->
     <jackrabbit.version>2.22.3</jackrabbit.version>
-    <!-- update-aem-deps:derived-from=org.apache.jackrabbit.oak-core:2.0-T20260429114506-681e702 -->
-    <oak.version>2.0.0</oak.version>
+    <!-- update-aem-deps:bundle=org.apache.jackrabbit.oak-core -->
+    <oak.version>2.2.0</oak.version>
 
     <!-- repository settings -->
     <distribution.snapshotRepositoryId>sonatype-central-snapshots</distribution.snapshotRepositoryId>
@@ -86,7 +86,7 @@
         <groupId>com.adobe.aem</groupId>
         <artifactId>aem-sdk-api</artifactId>
         <!-- update-aem-deps:from-aem-sdk-api -->
-        <version>2026.5.26353.20260528T211800Z-260500</version>
+        <version>2026.6.26635.20260611T122956Z-260500</version>
       </dependency>
 
       <!-- OSGi (individual artifacts) -->
@@ -506,6 +506,7 @@
       <dependency>
         <groupId>com.github.jknack</groupId>
         <artifactId>handlebars</artifactId>
+        <!-- update-aem-deps:derived-from=com.github.jknack.handlebars:4.3.1.B002 -->
         <version>4.3.1</version>
       </dependency>
       <dependency>
