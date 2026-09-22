@@ -56,12 +56,12 @@ What does the script do:
 * Read all bundle versions, package versions from local AEM instance and dependency versions from AEM SDK POM
 * Update all dependencies in the POM to the versions found in the locale instance and the AEM SDK POM
 
-As some dependencies are repackaged or embedded in other bundles there are a couple of "hints" put before the version tags in the POM that help the script to detect the right versions. The following hints are supported:
+As some dependencies are repackaged or embedded in other bundles there are a couple of "hints" put before the version tags or the property elements in the POM that help the script to detect the right versions. The following hints are supported:
 
 | Hint                                                                 | Description
 |----------------------------------------------------------------------|---------------
 | `update-aem-deps:bundle=<bundleSymbolicName>`                        | Read the bundle version from the bundle with the given symbolic name in the local AEM instance.
-| `update-aem-deps:bundle-package=<packageName>`                       | Read the package version of the given package exported by any bundle in the local AEM instance.
+| `update-aem-deps:bundle-package=<bundleSymbolicName>:<packageName>`  | Read the version of the given package exported by the bundle with the given symbolic name in the local AEM instance. If the package is exported with multiple versions, the highest version (in OSGi version order `<major>.<minor>.<micro>[.<qualifier>]`) is used.
 | `update-aem-deps:derived-from=<bundleSymbolicName>:<bundleVersion>`  | The dependency is embedded in the bundle with the given symbolic name and the given version. There is no support to extract the version from this bundle, you have to do it manually. But if the targeted bundle has new version you get a warning that the bundle has changed and you have to check manually if the embedded dependency version has changed as well and update the version and the `derived-from` hint in the POM manually. It's possible to use an expression like 1.0.* to match an version numbers starting with '1.0.'.
 | `update-aem-deps:from-aem-sdk-api`                                   | Read the version from the `dependencies` section of the AEM SDK API POM.
 | `update-aem-deps:ignore`                                             | Ignore the dependency in the script, you have to maintain the version manually.

@@ -196,7 +196,12 @@ def readBundleData(bundleData) {
         def packageVersionPattern = /(.*),version=(.*)/
         def matcher = (exportedPackage =~ packageVersionPattern)
         if (matcher.matches()) {
-          packageVersions[matcher.group(1)] = matcher.group(2)
+          def packageName = matcher.group(1)
+          def packageVersion = matcher.group(2)
+          // the same package may be exported with multiple versions - keep the highest one
+          if (compareOsgiVersions(packageVersion, packageVersions[packageName]) > 0) {
+            packageVersions[packageName] = packageVersion
+          }
         }
       }
     }
@@ -251,6 +256,13 @@ def pomUpdateProperties(doc, bundleData) {
       if (bundleName) {
         def version = getBundleVersion(bundleData, bundleName)
         assert version != null : 'Version of bundle ' + bundleName + ' not found'
+        prop.text = version
+        continue
+      }
+      def bundlePackage = getBundlePackageFromHint(hint)
+      if (bundlePackage) {
+        def version = getBundlePackageVersion(bundleData, bundlePackage)
+        assert version != null : 'Version of package ' + bundlePackage.packageName + ' exported by bundle ' + bundlePackage.bundleName + ' not found'
         prop.text = version
       }
     }
@@ -307,7 +319,7 @@ def pomUpdateDependencies(doc, bundleData, aemSdkApiData) {
       else {
         def bundlePackage = getBundlePackageFromHint(hint)
         if (bundlePackage) {
-          version = bundleData[bundlePackage.bundleName].packageVersions[bundlePackage.packageName]
+          version = getBundlePackageVersion(bundleData, bundlePackage)
         }
         else {
           // check for bundle = artifactId
@@ -407,6 +419,43 @@ def getBundleVersion(bundleData, bundleName) {
 
 def getAemSdkApiVersion(aemSdkApiData, groupId, artifactId) {
   return aemSdkApiData[groupId + ':' + artifactId]?.version
+}
+
+def getBundlePackageVersion(bundleData, bundlePackage) {
+  return bundleData[bundlePackage.bundleName]?.packageVersions?.get(bundlePackage.packageName)
+}
+
+// compares two versions in OSGi version order (<major>.<minor>.<micro>[.<qualifier>]), a null version is treated as lowest
+def compareOsgiVersions(version1, version2) {
+  if (version1 == version2) {
+    return 0
+  }
+  if (version1 == null) {
+    return -1
+  }
+  if (version2 == null) {
+    return 1
+  }
+  def parts1 = parseOsgiVersion(version1)
+  def parts2 = parseOsgiVersion(version2)
+  for (int i = 0; i < parts1.size(); i++) {
+    def result = parts1[i] <=> parts2[i]
+    if (result != 0) {
+      return result
+    }
+  }
+  return 0
+}
+
+// splits an OSGi version string into [major, minor, micro, qualifier] - the first three parts are compared as numbers, the qualifier as string
+def parseOsgiVersion(version) {
+  def parts = version.tokenize('.')
+  def numbers = (0..2).collect {
+    def part = parts.size() > it ? parts[it] : null
+    part?.isInteger() ? part.toInteger() : 0
+  }
+  def qualifier = parts.size() > 3 ? parts[3..-1].join('.') : ''
+  return numbers + [qualifier]
 }
 
 def matchesVersionWithGlobbing(actualVersion, expectedVersion) {
