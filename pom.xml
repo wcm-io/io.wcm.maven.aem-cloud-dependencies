@@ -21,7 +21,7 @@
 
   <groupId>io.wcm.maven</groupId>
   <artifactId>io.wcm.maven.aem-cloud-dependencies</artifactId>
-  <version>2026.9.28386.20260923T071724Z-260800.0001-SNAPSHOT</version>
+  <version>2026.10.28702.20261002T142904Z-260900.0000-SNAPSHOT</version>
   <packaging>pom</packaging>
 
   <name>AEM Cloud Service Dependencies</name>
@@ -68,7 +68,7 @@
     <slf4j.version>2.0.17</slf4j.version>
     <!-- update-aem-deps:bundle=org.apache.jackrabbit.jackrabbit-jcr-commons -->
     <jackrabbit.version>2.22.4</jackrabbit.version>
-    <!-- update-aem-deps:derived-from=org.apache.jackrabbit.oak-core:2.6.0-T20260911102104-c783be1aff -->
+    <!-- update-aem-deps:derived-from=org.apache.jackrabbit.oak-core:2.6.0-T20260929074115-a1d67d512c -->
     <oak.version>2.6.0</oak.version>
 
     <!-- repository settings -->
@@ -86,7 +86,7 @@
         <groupId>com.adobe.aem</groupId>
         <artifactId>aem-sdk-api</artifactId>
         <!-- update-aem-deps:from-aem-sdk-api -->
-        <version>2026.9.28386.20260923T071724Z-260800</version>
+        <version>2026.10.28702.20261002T142904Z-260900</version>
       </dependency>
 
       <!-- OSGi (individual artifacts) -->
