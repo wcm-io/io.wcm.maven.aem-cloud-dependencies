@@ -110,12 +110,14 @@ if (exitWithFailure) {
 // read URL from locale AEM instance
 def readAemUrl(relativeUrl) {
   def url = LOCAL_AEM_URL + relativeUrl
+  def user = LOCAL_AEM_USER
+  def password = LOCAL_AEM_PASSWORD
   try {
     HttpClient client = HttpClient.newBuilder()
         .connectTimeout(Duration.ofSeconds(10))
-        .authenticator(new Authenticator() {   
+        .authenticator(new Authenticator() {
             public PasswordAuthentication getPasswordAuthentication() {
-                return new PasswordAuthentication(LOCAL_AEM_USER, LOCAL_AEM_PASSWORD.toCharArray())
+                return new PasswordAuthentication(user, password.toCharArray())
             }
         })
         .version(HttpClient.Version.HTTP_1_1)
